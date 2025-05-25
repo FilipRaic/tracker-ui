@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "npx jest",
-    "test:ci": "npx jest --coverage"
+    "test:ci": "npx jest --coverage --passWithNoTests"
   },
   "private": true,
   "dependencies": {

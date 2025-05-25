@@ -3,7 +3,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
   testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.(ts|tsx)$': ['ts-jest', {
+    '^.+\\.(ts|js|html)$': ['jest-preset-angular', {
       tsconfig: '<rootDir>/tsconfig.spec.json',
       stringifyContentPathRegex: '\\.html$',
       useESM: false,
