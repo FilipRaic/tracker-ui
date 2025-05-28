@@ -1,25 +1,27 @@
-<app-error-popup #errorPopup></app-error-popup>
+<app-error-popup #errorPopup data-testid="errorPopup"></app-error-popup>
 <div class="container mt-4">
   <div class="card mb-4 shadow-sm">
-    <div class="card-header bg-white fw-bold">Your Habits</div>
+    <div class="card-header bg-white fw-bold" data-testid="habitsHeader">Your Habits</div>
 
     <ng-container *ngIf="habits.length > 0; else noHabits">
       <ul class="list-group list-group-flush">
         <li
           class="list-group-item d-flex justify-content-between align-items-center"
           *ngFor="let habit of habits"
+          data-testid="habitItem"
         >
           <div>
-            <strong>{{ habit.name }}</strong><br />
-            <small>Starts: {{ habit.startDate }}</small>
+            <strong data-testid="habitNameLabel">{{ habit.name }}</strong><br/>
+            <small data-testid="habitStartDateLabel">Starts: {{ habit.startDate }}</small>
           </div>
-          <span class="badge bg-info text-dark text-capitalize">{{ habit.frequency }}</span>
+          <span class="badge bg-info text-dark text-capitalize"
+                data-testid="habitFrequencyLabel">{{ habit.frequency }}</span>
         </li>
       </ul>
     </ng-container>
 
     <ng-template #noHabits>
-      <div class="p-3 text-center text-muted">
+      <div class="p-3 text-center text-muted" data-testid="noHabitsMessage">
         <p class="mb-2">You haven’t created any habits yet.</p>
         <p>Click <strong>+ Add New Habit</strong> to start building your routine!</p>
       </div>
@@ -27,24 +29,44 @@
   </div>
 
   <!-- Toggle Button -->
-  <button class="btn custom-btn mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#habitForm">
+  <button
+    class="btn custom-btn mb-3"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#habitForm"
+    data-testid="habitButton"
+  >
     + Add New Habit
   </button>
 
   <!-- Collapsible Form -->
-  <div class="collapse" id="habitForm">
+  <div class="collapse" id="habitForm" data-testid="habitForm">
     <div class="card card-body shadow-sm">
-      <form [formGroup]="habitForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="habitForm" (ngSubmit)="onSubmit()" data-testid="habitFormElement">
         <!-- Habit Name -->
         <div class="mb-3">
           <label for="habitName" class="form-label">Habit Name <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="habitName" formControlName="name" required placeholder="Enter habit name" />
+          <input
+            type="text"
+            class="form-control"
+            id="habitName"
+            formControlName="name"
+            required
+            placeholder="Enter habit name"
+            data-testid="habitNameInput"
+          />
         </div>
 
         <!-- Frequency -->
         <div class="mb-3">
           <label for="frequency" class="form-label">Frequency <span class="text-danger">*</span></label>
-          <select class="form-select" id="frequency" formControlName="frequency" required>
+          <select
+            class="form-select"
+            id="frequency"
+            formControlName="frequency"
+            required
+            data-testid="habitFrequencySelect"
+          >
             <option value="" disabled selected>Select frequency</option>
             <option value="day">Daily</option>
             <option value="week">Weekly</option>
@@ -56,17 +78,31 @@
         <!-- Start Date -->
         <div class="mb-3">
           <label for="startDate" class="form-label">Start Date <span class="text-danger">*</span></label>
-          <input type="date" class="form-control" id="startDate" formControlName="startDate" required />
+          <input
+            type="date"
+            class="form-control"
+            id="startDate"
+            formControlName="startDate"
+            required
+            data-testid="habitDateInput"
+          />
         </div>
 
         <!-- Optional Notes -->
         <div class="mb-3">
           <label for="notes" class="form-label">Notes (optional)</label>
-          <textarea class="form-control" id="notes" rows="3" formControlName="notes" placeholder="Additional details..."></textarea>
+          <textarea
+            class="form-control"
+            id="notes"
+            rows="3"
+            formControlName="notes"
+            placeholder="Additional details..."
+            data-testid="habitNotesInput"
+          ></textarea>
         </div>
 
         <!-- Submit Button -->
-        <button type="submit" class="btn custom-btn">Submit Habit</button>
+        <button type="submit" class="btn custom-btn" data-testid="submitHabitButton">Submit Habit</button>
       </form>
     </div>
   </div>

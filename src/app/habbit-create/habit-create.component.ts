@@ -26,7 +26,7 @@ export class HabitCreateComponent {
   habits: Habit[] = [];
   habitForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private habitService: HabitService) {
+  constructor(private readonly fb: FormBuilder, private readonly habitService: HabitService) {
     this.habitForm = this.fb.group({
       name: ['', Validators.required],
       frequency: ['', Validators.required],
@@ -64,11 +64,11 @@ export class HabitCreateComponent {
 
     Object.keys(this.habitForm.controls).forEach(field => {
       const control = this.habitForm.get(field);
-      if (control && control.hasError('isoDate')) {
+      if (control?.hasError('isoDate')) {
         validationErrors.push(`${field} must be in ISO format (YYYY-MM-DD)`)
-      } else if (control && control.hasError('dateInPast')) {
+      } else if (control?.hasError('dateInPast')) {
         validationErrors.push(`${field} cannot be in the past`)
-      } else if (control && control.hasError('required')) {
+      } else if (control?.hasError('required')) {
         validationErrors.push(`${field} is required or invalid`);
       }
     });
@@ -79,7 +79,7 @@ export class HabitCreateComponent {
   }
 
   private handleApiError(error: any) {
-    const msg = error?.error?.message || 'An unknown error occurred';
+    const msg = error?.error?.message ?? 'An unknown error occurred';
     this.errorPopup.showErrors(msg);
   }
 
@@ -92,7 +92,7 @@ export class HabitCreateComponent {
         return null;
       }
 
-      return isoDateRegex.test(value) ? null : { isoDate: true };
+      return isoDateRegex.test(value) ? null : {isoDate: true};
     };
   }
 
@@ -108,7 +108,7 @@ export class HabitCreateComponent {
       inputDate.setHours(0, 0, 0, 0);
       today.setHours(0, 0, 0, 0);
 
-      return inputDate >= today ? null : { dateInPast: true };
+      return inputDate >= today ? null : {dateInPast: true};
     };
   }
 }

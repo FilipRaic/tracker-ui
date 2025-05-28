@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Habit} from '../model/Habit';
 
@@ -7,18 +7,16 @@ import {Habit} from '../model/Habit';
   providedIn: 'root'
 })
 export class HabitService {
-  private apiUrl = 'http://localhost:8080/api/habits';
-  private httpOptions={
-    headers: new HttpHeaders({'Content-Type':'application/json'})
-  };
+  private readonly apiUrl = '/api/habits';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+  }
 
   getAllHabits(): Observable<Habit[]> {
-    return this.http.get<Habit[]>(this.apiUrl, this.httpOptions);
+    return this.http.get<Habit[]>(this.apiUrl);
   }
 
   createHabit(habit: Habit): Observable<Habit> {
-    return this.http.post<Habit>(this.apiUrl, habit, this.httpOptions);
+    return this.http.post<Habit>(this.apiUrl, habit);
   }
 }

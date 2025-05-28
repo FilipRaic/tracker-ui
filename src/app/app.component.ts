@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import {NavbarComponent} from './navbar/navbar.component';
 
 @Component({
@@ -9,11 +9,5 @@ import {NavbarComponent} from './navbar/navbar.component';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent implements OnInit{
-  title = 'tracker-ui';
-
-  constructor(private router: Router) {}
-
-  ngOnInit(): void {
-  }
+export class AppComponent {
 }
