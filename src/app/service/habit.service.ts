@@ -27,4 +27,8 @@ export class HabitService {
   markHabitAsDoneToday(habitId: number): Observable<void> {
     return this.http.put<void>(this.apiUrl + `/status/${habitId}`, {});
   }
+
+  deleteHabit(habitId: number) {
+    return this.http.delete(this.apiUrl + `/${habitId}`);
+  }
 }
