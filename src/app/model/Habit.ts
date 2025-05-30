@@ -5,3 +5,8 @@ export interface Habit {
   startDate: string; // ISO format date string (e.g., '2025-05-26')
   notes?: string;
 }
+
+export interface HabitStatus extends Habit {
+  done: boolean;
+  dueDate: string;
+}
