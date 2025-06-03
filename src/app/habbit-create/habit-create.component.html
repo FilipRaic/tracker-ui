@@ -1,3 +1,13 @@
+<app-custom-dialog
+  [show]="showConfirmDialog"
+  [type]="'danger'"
+  title="Delete Habit"
+  message="Are you sure you want to delete this habit?"
+  confirmText="Delete"
+  cancelText="Cancel"
+  (confirmed)="onConfirmDelete()"
+  (cancelled)="showConfirmDialog = false">
+</app-custom-dialog>
 <app-error-popup #errorPopup data-testid="errorPopup"></app-error-popup>
 <div class="container mt-4">
   <div class="card mb-4 shadow-sm">
@@ -6,16 +16,33 @@
     <ng-container *ngIf="habits.length > 0; else noHabits">
       <ul class="list-group list-group-flush">
         <li
-          class="list-group-item d-flex justify-content-between align-items-center"
-          *ngFor="let habit of habits"
+          class="list-group-item d-flex justify-content-between align-items-center p-0"
+          *ngFor="let habit of habits; let isLast = last"
           data-testid="habitItem"
         >
-          <div>
-            <strong data-testid="habitNameLabel">{{ habit.name }}</strong><br/>
-            <small data-testid="habitStartDateLabel">Starts: {{ habit.startDate }}</small>
+          <!-- Left side: name/start date -->
+          <div class="d-flex align-items-center gap-3" style="padding: 8px 16px; flex: 1;">
+            <div>
+              <strong data-testid="habitNameLabel" class="d-block">{{ habit.name }}</strong>
+              <small data-testid="habitStartDateLabel" class="text-muted">Starts: {{ habit.startDate }}</small>
+            </div>
           </div>
-          <span class="badge bg-info text-dark text-capitalize"
-                data-testid="habitFrequencyLabel">{{ habit.frequency }}</span>
+
+          <!-- Right side: frequency + trash button -->
+          <div class="d-flex align-items-center">
+            <span class="badge bg-info text-dark text-capitalize" data-testid="habitFrequencyLabel">
+              {{ habit.frequency }}
+            </span>
+            <button
+              class="btn btn-danger row-trash"
+              (click)="onDeleteClick(habit.id)"
+              data-testid="deleteHabitButton"
+              aria-label="Delete habit"
+              title="Delete habit"
+              [ngClass]="{ 'last-row-trash': isLast }">
+              <i class="bi bi-trash" style="font-size: 1.25rem;"></i>
+            </button>
+          </div>
         </li>
       </ul>
     </ng-container>
