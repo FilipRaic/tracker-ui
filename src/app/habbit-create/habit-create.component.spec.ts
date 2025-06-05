@@ -12,6 +12,7 @@ import {NullComponent} from '../shared/null-component';
 import {HabitService} from '../service/habit.service';
 import {ErrorPopupComponent} from '../error-popup/error-popup.component';
 import {Habit} from '../model/Habit';
+import {CustomDialogComponent} from '../custom-dialog/custom-dialog.component';
 
 describe('HabitCreateComponent', () => {
   let habitServiceMock: HabitService = mock(HabitService);
@@ -23,10 +24,12 @@ describe('HabitCreateComponent', () => {
       NoopAnimationsModule,
       RouterTestingModule.withRoutes([
         {path: '', component: NullComponent},
-        {path: 'habit/create', component: NullComponent}
+        {path: 'habit/create', component: NullComponent},
+        {path: 'habit/status', component: NullComponent}
       ]),
       HabitCreateComponent,
-      ErrorPopupComponent
+      ErrorPopupComponent,
+      CustomDialogComponent
     ],
     declarations: [],
     providers: [
@@ -84,7 +87,7 @@ describe('HabitCreateComponent', () => {
     const newHabit: Habit = {
       name: 'Meditate',
       frequency: 'day',
-      startDate: '2025-05-28',
+      startDate: '3000-01-01',
       notes: 'Daily meditation'
     };
     const createdHabit: Habit = {id: 1, ...newHabit};
@@ -101,9 +104,16 @@ describe('HabitCreateComponent', () => {
 
     await user.click(screen.getByTestId('submitHabitButton'));
 
-    expect(screen.getByTestId('habitNameLabel')).toHaveTextContent('Meditate');
-    expect(screen.getByTestId('habitStartDateLabel')).toHaveTextContent('Starts: 2025-05-28');
-    expect(screen.getByTestId('habitFrequencyLabel')).toHaveTextContent('day');
+    const habitNameLabels = await screen.getAllByTestId('habitNameLabel');
+    const habitStartDateLabels = await screen.getAllByTestId('habitStartDateLabel');
+    const habitFrequencyLabels = await screen.getAllByTestId('habitFrequencyLabel');
+
+    expect(habitNameLabels).toHaveLength(1);
+    expect(habitStartDateLabels).toHaveLength(1);
+    expect(habitFrequencyLabels).toHaveLength(1);
+    expect(habitNameLabels[0]).toHaveTextContent('Meditate');
+    expect(habitStartDateLabels[0]).toHaveTextContent('Starts: 3000-01-01');
+    expect(habitFrequencyLabels[0]).toHaveTextContent('day');
   });
 
   it('should show validation errors for invalid form submission', async () => {
@@ -134,5 +144,31 @@ describe('HabitCreateComponent', () => {
     await user.click(toggleButton);
 
     expect(formDiv).toHaveClass('collapse');
+  });
+
+  it('should delete a habit when the delete button is clicked', async () => {
+    const user = userEvent.setup();
+    const mockHabits: Habit[] = [
+      { id: 1, name: 'Exercise', frequency: 'day', startDate: '2025-05-28', notes: '' },
+      { id: 2, name: 'Read', frequency: 'month', startDate: '2025-06-01', notes: '' }
+    ];
+
+    when(habitServiceMock.getAllHabits()).thenReturn(of(mockHabits));
+
+    await render(HabitCreateComponent, renderOptions);
+
+    const deleteButtons = screen.getAllByTestId('deleteHabitButton');
+    expect(deleteButtons).toHaveLength(2);
+
+    when(habitServiceMock.deleteHabit(1)).thenReturn(of(null));
+
+    await user.click(deleteButtons[0]);
+
+    const confirmDialog = await screen.getByTestId('confirmDialogConfirm', { container: document.body });
+    await user.click(confirmDialog)
+
+    const remainingHabits = await screen.findAllByTestId('habitItem');
+    expect(remainingHabits).toHaveLength(1);
+    expect(screen.getByTestId('habitNameLabel')).toHaveTextContent('Read');
   });
 });

@@ -1,0 +1,29 @@
+<div *ngIf="show" class="custom-dialog-backdrop">
+  <div class="custom-dialog-box" [ngClass]="type">
+    <div class="custom-dialog-header d-flex align-items-center mb-3">
+      <i class="me-2" [ngClass]="{
+        'bi bi-exclamation-triangle-fill text-warning': type === 'warning',
+        'bi bi-check-circle-fill text-success': type === 'success',
+        'bi bi-x-circle-fill text-danger': type === 'danger'
+      }" style="font-size: 1.5rem;"></i>
+      <h5 class="m-0">{{ title }}</h5>
+    </div>
+
+    <p class="mb-4">{{ message }}</p>
+
+    <div class="d-flex justify-content-end gap-2">
+      <button class="btn btn-outline-secondary" (click)="cancel()">{{ cancelText }}</button>
+      <button
+        class="btn"
+        data-testid="confirmDialogConfirm"
+        [ngClass]="{
+          'btn-danger': type === 'danger',
+          'btn-warning': type === 'warning',
+          'btn-success': type === 'success'
+        }"
+        (click)="confirm()">
+        {{ confirmText }}
+      </button>
+    </div>
+  </div>
+</div>

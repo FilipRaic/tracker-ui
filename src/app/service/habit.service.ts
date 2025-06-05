@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {Habit} from '../model/Habit';
+import {Habit, HabitStatus} from '../model/Habit';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,19 @@ export class HabitService {
     return this.http.get<Habit[]>(this.apiUrl);
   }
 
+  getCurrentHabitsWithStatus(): Observable<HabitStatus[]> {
+    return this.http.get<HabitStatus[]>(this.apiUrl + '/status');
+  }
+
   createHabit(habit: Habit): Observable<Habit> {
     return this.http.post<Habit>(this.apiUrl, habit);
+  }
+
+  markHabitAsDoneToday(habitId: number): Observable<void> {
+    return this.http.put<void>(this.apiUrl + `/status/${habitId}`, {});
+  }
+
+  deleteHabit(habitId: number) {
+    return this.http.delete(this.apiUrl + `/${habitId}`);
   }
 }

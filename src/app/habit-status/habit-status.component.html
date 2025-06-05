@@ -1,0 +1,76 @@
+<app-error-popup #errorPopup data-testid="errorPopup"></app-error-popup>
+
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-header bg-white fw-bold" data-testid="habitsHeader">
+      Current state of Habits
+    </div>
+
+    <ng-container *ngIf="!loading; else loadingSkeleton">
+      <ng-container *ngIf="habitsDue.length > 0; else noHabits">
+        <ul class="list-group list-group-flush">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+            *ngFor="let habit of habitsDue"
+            [ngClass]="{ 'text-muted': habit.done, 'bg-light': habit.done }"
+            data-testid="habitItem"
+          >
+            <div>
+              <strong data-testid="habitNameLabel" class="d-block fs-6 mb-1">
+                {{ habit.name }}
+              </strong>
+              <div *ngIf="habit.notes" class="mt-1">
+                <small class="text-secondary fst-italic" data-testid="habitNotesLabel">
+                  📝 {{ habit.notes }}
+                </small>
+              </div>
+              <small data-testid="habitDueDateLabel" class="text-secondary d-block">
+                📅 Due: {{ habit.dueDate }}
+              </small>
+              <small data-testid="habitTimeRemainingLabel" class="text-muted d-block mb-1">
+                ⏳ {{ calculateTimeRemaining(habit.dueDate) }} remaining
+              </small>
+            </div>
+
+            <div class="d-flex align-items-center gap-2">
+              <button
+                class="btn btn-light text-white fw-bold"
+                style="background-color: #229ACA;"
+                [disabled]="habit.done"
+                (click)="markDone(habit)"
+                data-testid="markDoneButton"
+              >
+                {{ habit.done ? '✓ Done' : 'Mark as Done' }}
+              </button>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-template #noHabits>
+        <div class="p-3 text-center text-muted" data-testid="noHabitsMessage">
+          <p class="mb-2">No habits to complete today.</p>
+          <p>Enjoy your progress!</p>
+        </div>
+      </ng-template>
+    </ng-container>
+
+    <ng-template #loadingSkeleton>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngFor="let _ of [1, 2, 3]">
+          <div class="placeholder-glow">
+            <div class="mb-2">
+              <span class="placeholder col-6"></span>
+            </div>
+            <div class="mb-1">
+              <span class="placeholder col-4"></span>
+            </div>
+            <div>
+              <span class="placeholder col-3"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </ng-template>
+  </div>
+</div>

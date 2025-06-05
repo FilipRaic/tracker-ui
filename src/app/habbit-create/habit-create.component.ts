@@ -13,11 +13,12 @@ import {
 } from '@angular/forms';
 import {HabitService} from '../service/habit.service';
 import {ErrorPopupComponent} from '../error-popup/error-popup.component';
+import {CustomDialogComponent} from '../custom-dialog/custom-dialog.component';
 
 @Component({
   selector: 'app-habit-create',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, ErrorPopupComponent],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, ErrorPopupComponent, CustomDialogComponent],
   templateUrl: './habit-create.component.html',
   styleUrl: './habit-create.component.scss'
 })
@@ -25,6 +26,8 @@ export class HabitCreateComponent {
   @ViewChild('errorPopup') errorPopup!: ErrorPopupComponent;
   habits: Habit[] = [];
   habitForm: FormGroup;
+  showConfirmDialog: boolean = false;
+  pendingDeleteId: number | undefined = undefined;
 
   constructor(private readonly fb: FormBuilder, private readonly habitService: HabitService) {
     this.habitForm = this.fb.group({
@@ -57,6 +60,27 @@ export class HabitCreateComponent {
     } else {
       this.showValidationErrors();
     }
+  }
+
+  onDeleteClick(habitId: number | undefined) {
+    this.pendingDeleteId = habitId;
+    this.showConfirmDialog = true;
+  }
+
+  onConfirmDelete() {
+    this.showConfirmDialog = false;
+    this.deleteHabit(this.pendingDeleteId);
+  }
+
+  private deleteHabit(habitId: number | undefined): void {
+    if (!habitId) return;
+
+    this.habitService.deleteHabit(habitId).subscribe({
+      next: () => {
+        this.habits = this.habits.filter(h => h.id !== habitId)
+      },
+      error: (err) => this.handleApiError(err)
+    });
   }
 
   private showValidationErrors() {
