@@ -9,12 +9,21 @@
 </div>
  <div class="entry-view">
   <h2>Journal entry from selected date:</h2>
-  <p *ngIf="selectedEntry">{{ selectedEntry.description }}</p>
-  <p *ngIf="!selectedEntry">Click a date to view the entry.</p>
+  <p *ngIf="entries.length === 0">
+  You haven't written any journal entries yet. Start journaling to track your thoughts and feelings!
+</p>
+<p *ngIf="entries.length > 0 && !selectedEntry">
+  Click a date to view the entry.
+</p>
+<p *ngIf="selectedEntry">{{ selectedEntry.description }}</p>
+  <button *ngIf="selectedEntry" (click)="deleteEntry()">Delete</button>
 </div>
   <div class="entry-write">
     <h2>Write something for your journal</h2>
     <textarea [(ngModel)]="newEntry.description"></textarea>
     <button (click)="addEntry()">Add journal entry</button>
   </div>
+  <div *ngIf="entrySubmitted" class="alert alert-success" role="alert">
+  Journal entry saved successfully!
+</div>
 </div>
