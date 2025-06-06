@@ -1,29 +1,31 @@
-<div class="container">
- <div class="date-list">
-  <h2>Journal entry from date:</h2>
-  <ul>
-    <li *ngFor="let entry of entries" (click)="selectEntry(entry.date)">
-      {{ entry.date | date: 'd.M.yyyy' }}
-    </li>
-  </ul>
-</div>
- <div class="entry-view">
-  <h2>Journal entry from selected date:</h2>
-  <p *ngIf="entries.length === 0">
-  You haven't written any journal entries yet. Start journaling to track your thoughts and feelings!
-</p>
-<p *ngIf="entries.length > 0 && !selectedEntry">
-  Click a date to view the entry.
-</p>
-<p *ngIf="selectedEntry">{{ selectedEntry.description }}</p>
-  <button *ngIf="selectedEntry" (click)="deleteEntry()">Delete</button>
-</div>
-  <div class="entry-write">
-    <h2>Write something for your journal</h2>
-    <textarea [(ngModel)]="newEntry.description"></textarea>
-    <button (click)="addEntry()">Add journal entry</button>
+<div class="container" data-testid="journal-container">
+  <div class="date-list" data-testid="date-list">
+    <h2 data-testid="date-list-title">Journal entry from date:</h2>
+    <ul>
+      <li *ngFor="let entry of entries"
+          (click)="selectEntry(entry.date)"
+          data-testid="entry-date-item">
+        {{ entry.date | date: 'd.M.yyyy' }}
+      </li>
+    </ul>
   </div>
-  <div *ngIf="entrySubmitted" class="alert alert-success" role="alert">
-  Journal entry saved successfully!
-</div>
+  <div class="entry-view" data-testid="entry-view">
+    <h2 data-testid="entry-view-title">Journal entry from selected date:</h2>
+    <p *ngIf="entries.length === 0" data-testid="no-entries-message">
+      You haven't written any journal entries yet. Start journaling to track your thoughts and feelings!
+    </p>
+    <p *ngIf="entries.length > 0 && !selectedEntry" data-testid="select-entry-message">
+      Click a date to view the entry.
+    </p>
+    <p *ngIf="selectedEntry" data-testid="entry-content">{{ selectedEntry.description }}</p>
+    <button *ngIf="selectedEntry" (click)="deleteEntry()" data-testid="delete-entry-button">Delete</button>
+  </div>
+  <div class="entry-write" data-testid="entry-write">
+    <h2 data-testid="entry-write-title">Write something for your journal</h2>
+    <textarea [(ngModel)]="newEntry.description" data-testid="entry-textarea"></textarea>
+    <button (click)="addEntry()" data-testid="add-entry-button">Add journal entry</button>
+  </div>
+  <div *ngIf="entrySubmitted" class="alert alert-success" role="alert" data-testid="success-message">
+    Journal entry saved successfully!
+  </div>
 </div>
