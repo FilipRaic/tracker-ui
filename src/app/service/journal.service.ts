@@ -24,4 +24,8 @@ export class JournalService {
   putEntry(entry: JournalEntry): Observable<JournalEntry> {
   return this.http.put<JournalEntry>(`${this.apiUrl}/${entry.date}`, entry);
 }
+
+  deleteEntry(date: string): Observable<void> {
+  return this.http.delete<void>(`${this.apiUrl}/${date}`);
+}
 }
