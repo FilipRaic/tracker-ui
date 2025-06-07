@@ -1,0 +1,11 @@
+<div class="notification-container" data-testid="notification-container">
+  <div *ngFor="let notification of notifications"
+       class="notification-toast"
+       [ngClass]="getNotificationClass(notification.type)"
+       data-testid="notification-toast">
+    <div class="notification-content">
+      <span class="notification-message" data-testid="notification-message">{{ notification.message }}</span>
+      <button class="notification-close" data-testid="notification-close" (click)="removeNotification(notification.id)">×</button>
+    </div>
+  </div>
+</div>

@@ -44,7 +44,6 @@ export class HabitStatusComponent implements OnInit {
     const dueDate = new Date(dueDateStr);
     const now = new Date();
 
-    // Set due date to end of day (23:59:59)
     dueDate.setHours(23, 59, 59, 999);
 
     const diffInMs = dueDate.getTime() - now.getTime();
