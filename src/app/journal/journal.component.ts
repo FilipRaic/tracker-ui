@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common'; 
-import { FormsModule } from '@angular/forms'; 
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { JournalService } from '../service/journal.service';
 import { JournalEntry } from '../model/JournalEntry';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'app-journal',
   templateUrl: './journal.component.html',
   styleUrls: ['./journal.component.scss'],
-  imports: [CommonModule, FormsModule], 
+  imports: [CommonModule, FormsModule, TranslatePipe],
 })
 export class JournalComponent implements OnInit {
   entries: JournalEntry[] = [];

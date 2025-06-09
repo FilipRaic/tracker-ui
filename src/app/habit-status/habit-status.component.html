@@ -1,9 +1,7 @@
-<app-error-popup #errorPopup data-testid="errorPopup"></app-error-popup>
-
 <div class="container mt-4">
   <div class="card shadow-sm">
     <div class="card-header bg-white fw-bold" data-testid="habitsHeader">
-      Current state of Habits
+      {{ 'HABIT_STATUS.TABLE_HEADER' | translate }}
     </div>
 
     <ng-container *ngIf="!loading; else loadingSkeleton">
@@ -25,10 +23,10 @@
                 </small>
               </div>
               <small data-testid="habitDueDateLabel" class="text-secondary d-block">
-                📅 Due: {{ habit.dueDate }}
+                📅 {{ ('HABIT_STATUS.ROW_DUE_DATE' | translate) + ': ' + habit.dueDate }}
               </small>
               <small data-testid="habitTimeRemainingLabel" class="text-muted d-block mb-1">
-                ⏳ {{ calculateTimeRemaining(habit.dueDate) }} remaining
+                ⏳ {{ calculateTimeRemaining(habit.dueDate) + ' ' + ('HABIT_STATUS.ROW_REMAINING' | translate) }}
               </small>
             </div>
 
@@ -40,7 +38,7 @@
                 (click)="markDone(habit)"
                 data-testid="markDoneButton"
               >
-                {{ habit.done ? '✓ Done' : 'Mark as Done' }}
+                {{ (habit.done ? 'HABIT_STATUS.MARK_BUTTON_DONE' : 'HABIT_STATUS.MARK_BUTTON_NOT_DONE') | translate}}
               </button>
             </div>
           </li>
@@ -49,8 +47,8 @@
 
       <ng-template #noHabits>
         <div class="p-3 text-center text-muted" data-testid="noHabitsMessage">
-          <p class="mb-2">No habits to complete today.</p>
-          <p>Enjoy your progress!</p>
+          <p class="mb-2">{{ 'HABIT_STATUS.NO_HABITS_COMPLETE' | translate }}</p>
+          <p>{{ 'HABIT_STATUS.ENJOY_PROGRESS' | translate }}</p>
         </div>
       </ng-template>
     </ng-container>

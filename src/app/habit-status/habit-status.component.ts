@@ -1,19 +1,18 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { HabitService } from '../service/habit.service';
 import { HabitStatus } from '../model/Habit';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
-import {ErrorPopupComponent} from '../error-popup/error-popup.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-habit-status',
   standalone: true,
-  imports: [CommonModule, RouterModule, ErrorPopupComponent],
+  imports: [CommonModule, RouterModule, TranslatePipe],
   templateUrl: './habit-status.component.html',
   styleUrl: './habit-status.component.scss'
 })
 export class HabitStatusComponent implements OnInit {
-  @ViewChild('errorPopup') errorPopup!: ErrorPopupComponent;
   habitsDue: HabitStatus[] = [];
   loading = true;
 
@@ -24,8 +23,7 @@ export class HabitStatusComponent implements OnInit {
       next : (habits) => {
         this.habitsDue = habits;
         this.loading = false;
-      },
-      error: (err) => this.handleApiError(err)
+      }
     });
   }
 
@@ -35,8 +33,7 @@ export class HabitStatusComponent implements OnInit {
     this.habitService.markHabitAsDoneToday(habit.id).subscribe({
       next: () => {
         habit.done = true;
-      },
-      error: (err) => this.handleApiError(err)
+      }
     });
   }
 
@@ -61,10 +58,5 @@ export class HabitStatusComponent implements OnInit {
     parts.push(`${minutes}m`);
 
     return parts.join(' ');
-  }
-
-  private handleApiError(error: any) {
-    const msg = error?.error?.message ?? 'An unknown error occurred';
-    this.errorPopup.showErrors(msg);
   }
 }
