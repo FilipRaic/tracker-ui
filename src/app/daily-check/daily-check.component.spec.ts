@@ -7,6 +7,7 @@ import {DailyCheckComponent} from './daily-check.component';
 import {DailyCheckService} from '../service/daily-check.service';
 import {NotificationService} from '../service/notification.service';
 import {DailyCheck, DailyQuestion, QuestionCategory} from '../model/DailyCheck';
+import {TranslateTestingModule} from 'ngx-translate-testing';
 
 describe('DailyCheckComponent', () => {
   let component: DailyCheckComponent;
@@ -57,7 +58,10 @@ describe('DailyCheckComponent', () => {
     mockRouter.navigate.and.returnValue(Promise.resolve(true));
 
     await TestBed.configureTestingModule({
-      imports: [DailyCheckComponent],
+      imports: [
+        DailyCheckComponent,
+        TranslateTestingModule.withTranslations({ en: require('../../../src/assets/i18n/en.json')})
+      ],
       providers: [
         {provide: DailyCheckService, useValue: mockDailyCheckService},
         {provide: NotificationService, useValue: mockNotificationService},

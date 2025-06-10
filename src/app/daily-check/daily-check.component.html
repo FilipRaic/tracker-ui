@@ -1,12 +1,14 @@
 <div class="container-fluid p-0" data-testid="daily-check-container">
   <div class="header-bar text-center">
-    <h1 data-testid="daily-check-title">Your daily check in</h1>
+    <h1 data-testid="daily-check-title">{{ 'DAILY_CHECK.MAIN_HEADER' | translate }}</h1>
   </div>
 
   <div *ngIf="dailyCheck$ | async as dailyCheck" class="daily-check-container" data-testid="daily-check-content">
     <div class="greeting mb-4 text-center">
-      <h2 data-testid="greeting-title">Hi Andrew, hope you're doing great!</h2>
-      <p data-testid="greeting-text">Please answer some questions so we can get a feel for you feels 😊</p>
+      <h2 data-testid="greeting-title">
+        {{ ('DAILY_CHECK.HI' | translate) + " Andrew" + ('DAILY_CHECK.SECONDARY_HEADER' | translate) }}
+      </h2>
+      <p data-testid="greeting-text">{{ 'DAILY_CHECK.INSTRUCTION' | translate }}</p>
     </div>
 
     <div class="progress-container mb-4" data-testid="progress-container">
@@ -45,20 +47,21 @@
                 *ngIf="currentQuestionIndex > 0"
                 (click)="previousQuestion(dailyCheck)"
                 data-testid="previous-button">
-          Previous
+          {{ 'DAILY_CHECK.PREVIOUS' | translate }}
         </button>
         <button class="btn btn-primary"
                 [disabled]="!canGoNext()"
                 (click)="nextQuestion(dailyCheck)"
                 data-testid="next-button">
-          {{ currentQuestionIndex !== (dailyCheck.questions.length - 1) ? 'Next' : 'Submit' }}
+          {{ (currentQuestionIndex !== (dailyCheck.questions.length - 1) ?
+            'DAILY_CHECK.NEXT' : 'DAILY_CHECK.SUBMIT') | translate}}
         </button>
       </div>
     </div>
 
     <div *ngIf="dailyCheck.questions.length < 1" class="alert alert-info text-center"
          data-testid="no-questions-message">
-      No questions available for this daily check.
+      {{ 'DAILY_CHECK.NO_QUESTIONS' | translate }}
     </div>
   </div>
 </div>

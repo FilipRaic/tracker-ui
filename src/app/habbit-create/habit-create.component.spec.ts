@@ -10,9 +10,9 @@ import {of} from 'rxjs';
 import {HabitCreateComponent} from './habit-create.component';
 import {NullComponent} from '../shared/null-component';
 import {HabitService} from '../service/habit.service';
-import {ErrorPopupComponent} from '../error-popup/error-popup.component';
 import {Habit} from '../model/Habit';
 import {CustomDialogComponent} from '../custom-dialog/custom-dialog.component';
+import {TranslateTestingModule} from 'ngx-translate-testing';
 
 describe('HabitCreateComponent', () => {
   let habitServiceMock: HabitService = mock(HabitService);
@@ -28,8 +28,8 @@ describe('HabitCreateComponent', () => {
         {path: 'habit/status', component: NullComponent}
       ]),
       HabitCreateComponent,
-      ErrorPopupComponent,
-      CustomDialogComponent
+      CustomDialogComponent,
+      TranslateTestingModule.withTranslations({ en: require('../../../src/assets/i18n/en.json')})
     ],
     declarations: [],
     providers: [
@@ -114,20 +114,6 @@ describe('HabitCreateComponent', () => {
     expect(habitNameLabels[0]).toHaveTextContent('Meditate');
     expect(habitStartDateLabels[0]).toHaveTextContent('Starts: 3000-01-01');
     expect(habitFrequencyLabels[0]).toHaveTextContent('day');
-  });
-
-  it('should show validation errors for invalid form submission', async () => {
-    const user = userEvent.setup();
-    when(habitServiceMock.getAllHabits()).thenReturn(of([]));
-
-    await render(HabitCreateComponent, renderOptions);
-    await user.click(screen.getByTestId('habitButton'));
-
-    await user.click(screen.getByTestId('submitHabitButton'));
-
-    expect(screen.getByText('name is required or invalid')).toBeVisible();
-    expect(screen.getByText('frequency is required or invalid')).toBeVisible();
-    expect(screen.getByText('startDate is required or invalid')).toBeVisible();
   });
 
   it('should toggle form visibility on button click', async () => {

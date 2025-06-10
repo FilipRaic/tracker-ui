@@ -6,11 +6,12 @@ import {DailyCheckService} from '../service/daily-check.service';
 import {DailyCheck, DailyQuestion} from '../model/DailyCheck';
 import {NotificationService} from '../service/notification.service';
 import {Observable, tap} from 'rxjs';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-daily-check',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TranslatePipe],
   templateUrl: './daily-check.component.html',
   styleUrl: './daily-check.component.scss'
 })

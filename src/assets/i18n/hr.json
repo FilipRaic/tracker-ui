@@ -1,0 +1,84 @@
+{
+  "LANGUAGE": {
+    "EN": "Engleski",
+    "HR": "Hrvatski",
+    "DE": "Njemački"
+  },
+  "NAV": {
+    "HEADER": "Praćenje navika za mentalno zdravlje",
+    "HOME": "Početna",
+    "HABIT": "Navika",
+    "TRACK_HABITS": "Prati navike",
+    "YOUR_HABITS": "Tvoje navike",
+    "JOURNAL": "Dnevnik",
+    "LANGUAGE": "Jezik"
+  },
+  "DAILY_CHECK": {
+    "MAIN_HEADER": "Tvoja dnevna prijava",
+    "HI": "Bok",
+    "SECONDARY_HEADER": ", nadam se da si dobro!",
+    "INSTRUCTION": "Molimo odgovori na nekoliko pitanja kako bismo znali kako se osjećaš \uD83D\uDE0A",
+    "PREVIOUS": "Prethodno",
+    "NEXT": "Sljedeće",
+    "SUBMIT": "Pošalji",
+    "NO_QUESTIONS": "Nema dostupnih pitanja za ovu dnevnu prijavu."
+  },
+  "HABIT_CREATE": {
+    "DELETE_TITLE": "Izbriši naviku",
+    "DELETE_MESSAGE": "Jesi li siguran/na da želiš izbrisati ovu naviku?",
+    "DELETE_CONFIRM": "Izbriši",
+    "DELETE_CANCEL": "Odustani",
+    "TABLE_HEADER": "Tvoje navike",
+    "ROW_START_DATE": "Početak",
+    "FREQUENCY": {
+      "DAY": "dan",
+      "WEEK": "tjedan",
+      "MONTH": "mjesec",
+      "YEAR": "godina"
+    },
+    "NO_HABITS": "Još nisi stvorio/la nijednu naviku.",
+    "ENCOURAGE": {
+      "CLICK": "Klikni",
+      "ADD_NEW": "+ Dodaj novu naviku",
+      "END": "da započneš svoju rutinu!"
+    },
+    "ADD_FORM": {
+      "HABIT_NAME": "Naziv navike",
+      "HABIT_NAME_PLACEHOLDER": "Unesi naziv navike",
+      "HABIT_FREQUENCY": "Učestalost",
+      "HABIT_FREQUENCY_PLACEHOLDER": "Odaberi učestalost",
+      "HABIT_FREQUENCY_DAY": "Dnevno",
+      "HABIT_FREQUENCY_WEEK": "Tjedno",
+      "HABIT_FREQUENCY_MONTH": "Mjesečno",
+      "HABIT_FREQUENCY_YEAR": "Godišnje",
+      "HABIT_START_DATE": "Datum početka",
+      "HABIT_NOTES": "Bilješke (opcionalno)",
+      "HABIT_NOTES_PLACEHOLDER": "Dodatni detalji...",
+      "SUBMIT": "Dodaj naviku"
+    },
+    "ERROR": {
+      "DATE_ISO_FORMAT": "mora biti u ISO formatu (GGGG-MM-DD)",
+      "PRESENT_OR_FUTURE": "ne može biti u prošlosti",
+      "REQUIRED": "je obavezno ili nije ispravno"
+    }
+  },
+  "HABIT_STATUS": {
+    "TABLE_HEADER": "Trenutno stanje navika",
+    "ROW_DUE_DATE": "Rok",
+    "ROW_REMAINING": "preostalo",
+    "MARK_BUTTON_DONE": "✓ Gotovo",
+    "MARK_BUTTON_NOT_DONE": "Označi kao gotovo",
+    "NO_HABITS_COMPLETE": "Nema navika za dovršiti danas.",
+    "ENJOY_PROGRESS": "Uživaj u svom napretku!"
+  },
+  "JOURNAL": {
+    "HEADER": "Unos dnevnika za datum:",
+    "HEADER_SELECTED_DATE": "Unos dnevnika za odabrani datum:",
+    "NO_JOURNAL_ENTRIES": "Još nisi napisao nijedan unos u dnevnik. Započni pisati kako bi pratio svoje misli i osjećaje!",
+    "DATE_CLICK": "Klikni na datum za prikaz unosa.",
+    "DELETE": "Izbriši",
+    "WRITE_FOR_JOURNAL": "Napiši nešto za svoj dnevnik",
+    "ADD_ENTRY": "Dodaj unos u dnevnik",
+    "ENTRY_SAVED": "Unos je uspješno spremljen u dnevnik!"
+  }
+}

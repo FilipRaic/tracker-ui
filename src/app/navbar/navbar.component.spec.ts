@@ -6,6 +6,7 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {userEvent} from '@testing-library/user-event';
 import {NavbarComponent} from './navbar.component';
 import {NullComponent} from '../shared/null-component';
+import {TranslateTestingModule} from 'ngx-translate-testing';
 
 describe('NavbarComponent', () => {
   const renderOptions = {
@@ -16,7 +17,8 @@ describe('NavbarComponent', () => {
         {path: '', component: NullComponent},
         {path: 'habit/create', component: NullComponent}
       ]),
-      NavbarComponent
+      NavbarComponent,
+      TranslateTestingModule.withTranslations({ en: require('../../../src/assets/i18n/en.json')})
     ],
     declarations: []
   };

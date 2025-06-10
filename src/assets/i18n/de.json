@@ -1,0 +1,84 @@
+{
+  "LANGUAGE": {
+    "EN": "Englisch",
+    "HR": "Kroatisch",
+    "DE": "Deutsch"
+  },
+  "NAV": {
+    "HEADER": "Gewohnheitstracker für psychische Gesundheit",
+    "HOME": "Startseite",
+    "HABIT": "Gewohnheit",
+    "TRACK_HABITS": "Gewohnheiten verfolgen",
+    "YOUR_HABITS": "Deine Gewohnheiten",
+    "JOURNAL": "Tagebuch",
+    "LANGUAGE": "Sprache"
+  },
+  "DAILY_CHECK": {
+    "MAIN_HEADER": "Dein täglicher Check-in",
+    "HI": "Hallo",
+    "SECONDARY_HEADER": ", hoffe, es geht dir gut!",
+    "INSTRUCTION": "Bitte beantworte ein paar Fragen, damit wir sehen, wie du dich fühlst \uD83D\uDE0A",
+    "PREVIOUS": "Zurück",
+    "NEXT": "Weiter",
+    "SUBMIT": "Absenden",
+    "NO_QUESTIONS": "Keine Fragen verfügbar für diesen täglichen Check-in."
+  },
+  "HABIT_CREATE": {
+    "DELETE_TITLE": "Gewohnheit löschen",
+    "DELETE_MESSAGE": "Möchtest du diese Gewohnheit wirklich löschen?",
+    "DELETE_CONFIRM": "Löschen",
+    "DELETE_CANCEL": "Abbrechen",
+    "TABLE_HEADER": "Deine Gewohnheiten",
+    "ROW_START_DATE": "Startet am",
+    "FREQUENCY": {
+      "DAY": "Tag",
+      "WEEK": "Woche",
+      "MONTH": "Monat",
+      "YEAR": "Jahr"
+    },
+    "NO_HABITS": "Du hast noch keine Gewohnheiten erstellt.",
+    "ENCOURAGE": {
+      "CLICK": "Klicke",
+      "ADD_NEW": "+ Neue Gewohnheit",
+      "END": "um deine Routine zu beginnen!"
+    },
+    "ADD_FORM": {
+      "HABIT_NAME": "Gewohnheitsname",
+      "HABIT_NAME_PLACEHOLDER": "Name der Gewohnheit eingeben",
+      "HABIT_FREQUENCY": "Frequenz",
+      "HABIT_FREQUENCY_PLACEHOLDER": "Frequenz auswählen",
+      "HABIT_FREQUENCY_DAY": "Täglich",
+      "HABIT_FREQUENCY_WEEK": "Wöchentlich",
+      "HABIT_FREQUENCY_MONTH": "Monatlich",
+      "HABIT_FREQUENCY_YEAR": "Jährlich",
+      "HABIT_START_DATE": "Startdatum",
+      "HABIT_NOTES": "Notizen (optional)",
+      "HABIT_NOTES_PLACEHOLDER": "Zusätzliche Details...",
+      "SUBMIT": "Gewohnheit hinzufügen"
+    },
+    "ERROR": {
+      "DATE_ISO_FORMAT": "muss im ISO-Format sein (JJJJ-MM-TT)",
+      "PRESENT_OR_FUTURE": "darf nicht in der Vergangenheit liegen",
+      "REQUIRED": "ist erforderlich oder ungültig"
+    }
+  },
+  "HABIT_STATUS": {
+    "TABLE_HEADER": "Aktueller Stand der Gewohnheiten",
+    "ROW_DUE_DATE": "Fällig",
+    "ROW_REMAINING": "verbleibend",
+    "MARK_BUTTON_DONE": "✓ Erledigt",
+    "MARK_BUTTON_NOT_DONE": "Als erledigt markieren",
+    "NO_HABITS_COMPLETE": "Keine Gewohnheiten für heute zu erledigen.",
+    "ENJOY_PROGRESS": "Genieße deinen Fortschritt!"
+  },
+  "JOURNAL": {
+    "HEADER": "Tagebucheintrag vom Datum:",
+    "HEADER_SELECTED_DATE": "Tagebucheintrag vom ausgewählten Datum:",
+    "NO_JOURNAL_ENTRIES": "Du hast noch keine Tagebucheinträge geschrieben. Fang an zu schreiben, um deine Gedanken und Gefühle festzuhalten!",
+    "DATE_CLICK": "Klicke auf ein Datum, um den Eintrag zu sehen.",
+    "DELETE": "Löschen",
+    "WRITE_FOR_JOURNAL": "Schreibe etwas für dein Tagebuch",
+    "ADD_ENTRY": "Tagebucheintrag hinzufügen",
+    "ENTRY_SAVED": "Tagebucheintrag erfolgreich gespeichert!"
+  }
+}
