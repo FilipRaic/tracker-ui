@@ -6,6 +6,7 @@ import {of, throwError} from 'rxjs';
 import {JournalComponent} from './journal.component';
 import {JournalService} from '../service/journal.service';
 import {JournalEntry} from '../model/JournalEntry';
+import {TranslateTestingModule} from 'ngx-translate-testing';
 
 describe('JournalComponent', () => {
   let component: JournalComponent;
@@ -39,7 +40,10 @@ describe('JournalComponent', () => {
     mockJournalService.deleteEntry.and.returnValue(of(void 0));
 
     await TestBed.configureTestingModule({
-      imports: [JournalComponent, FormsModule],
+      imports: [
+        JournalComponent,
+        FormsModule,
+        TranslateTestingModule.withTranslations({ en: require('../../../src/assets/i18n/en.json')})],
       providers: [
         {provide: JournalService, useValue: mockJournalService}
       ]
@@ -182,7 +186,7 @@ describe('JournalComponent', () => {
 
     deleteButton = fixture.debugElement.query(By.css('[data-testid="delete-entry-button"]'));
     expect(deleteButton).not.toBeNull();
-    expect(deleteButton.nativeElement.textContent).toBe('Delete');
+    expect(deleteButton.nativeElement.textContent.trim()).toBe('Delete');
   });
 
   it('should show success message when entry is submitted', () => {

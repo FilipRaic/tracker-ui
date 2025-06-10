@@ -27,6 +27,7 @@
     "bootstrap": "^5.3.6",
     "bootstrap-icons": "^1.10.5",
     "jest-preview": "^0.3.1",
+    "ngx-translate-testing": "^7.0.0",
     "rxjs": "~7.8.0",
     "ts-mockito": "^2.6.1",
     "tslib": "^2.3.0",

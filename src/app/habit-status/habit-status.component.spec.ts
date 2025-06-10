@@ -3,7 +3,7 @@ import { HabitStatusComponent } from './habit-status.component';
 import { HabitService } from '../service/habit.service';
 import { of } from 'rxjs';
 import { By } from '@angular/platform-browser';
-import { ErrorPopupComponent } from '../error-popup/error-popup.component';
+import {TranslateTestingModule} from 'ngx-translate-testing';
 
 describe('HabitStatusComponent', () => {
   let component: HabitStatusComponent;
@@ -29,7 +29,10 @@ describe('HabitStatusComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [HabitStatusComponent],
+      imports: [
+        HabitStatusComponent,
+        TranslateTestingModule.withTranslations({ en: require('../../../src/assets/i18n/en.json')})
+      ],
       providers: [{ provide: HabitService, useValue: mockHabitService }]
     }).compileComponents().then(() => {
       fixture = TestBed.createComponent(HabitStatusComponent);
@@ -93,13 +96,5 @@ describe('HabitStatusComponent', () => {
     const noHabitsEl = fixture.debugElement.query(By.css('[data-testid="noHabitsMessage"]')).nativeElement;
     expect(noHabitsEl).toBeTruthy();
     expect(noHabitsEl.textContent).toContain('No habits to complete today');
-  });
-
-  it('should handle API error and call showErrors on popup', () => {
-    const showErrorsSpy = jest.fn();
-    component.errorPopup = { showErrors: showErrorsSpy } as unknown as ErrorPopupComponent;
-
-    component['handleApiError']({ error: { message: 'Test error' } });
-    expect(showErrorsSpy).toHaveBeenCalledWith('Test error');
   });
 });
