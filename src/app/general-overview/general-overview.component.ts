@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
+import { WellbeingTip } from '../model/WellbeingTip';
+import { TipService } from '../service/wellbeing-tip.service';
 
 @Component({
   selector: 'app-general-overview',
@@ -9,6 +11,15 @@ import {RouterModule} from '@angular/router';
   templateUrl: './general-overview.component.html',
   styleUrl: './general-overview.component.scss'
 })
-export class GeneralOverviewComponent {
+export class GeneralOverviewComponent implements OnInit{
+   tips: WellbeingTip[] = [];
+
+  constructor(private tipService: TipService) {}
+
+  ngOnInit(): void {
+    this.tipService.getTips().subscribe((data) => {
+      this.tips = data;
+    });
+  }
 
 }
