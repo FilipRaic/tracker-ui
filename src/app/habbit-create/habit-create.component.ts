@@ -55,6 +55,7 @@ export class HabitCreateComponent {
         next: (created) => {
           this.habits.push(created);
           this.habitForm.reset();
+          this.notificationService.addNotification(this.translate.instant('HABIT_CREATE.HABIT_CREATED'), 'success')
         }
       });
     } else {

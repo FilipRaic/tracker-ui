@@ -93,6 +93,8 @@
     "NEXT": "Weiter",
     "SUBMIT": "Absenden",
     "NO_QUESTIONS": "Keine Fragen verfügbar für diesen täglichen Check-in.",
+    "ERROR_QUESTIONS_NOT_FILLED": "Bitte beantworten Sie alle Fragen vor dem Absenden",
+    "CHECK_SUBMITTED": "Tagescheck eingereicht",
     "NO_CHECK_TITLE": "Kein täglicher Scheck verfügbar",
     "NO_CHECK_MESSAGE": "Es sieht so aus, als hätten Sie den heutigen Scheck bereits abgeschlossen oder es gibt momentan keinen verfügbaren.",
     "NO_CHECK_FOOTER": "Bitte schauen Sie morgen wieder vorbei, um einen neuen täglichen Scheck zu erhalten!",
@@ -135,7 +137,8 @@
       "DATE_ISO_FORMAT": "muss im ISO-Format sein (JJJJ-MM-TT)",
       "PRESENT_OR_FUTURE": "darf nicht in der Vergangenheit liegen",
       "REQUIRED": "ist erforderlich oder ungültig"
-    }
+    },
+    "HABIT_CREATED": "Neue Gewohnheit geschaffen"
   },
   "HABIT_STATUS": {
     "TABLE_HEADER": "Aktueller Stand der Gewohnheiten",
