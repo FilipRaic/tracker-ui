@@ -11,7 +11,55 @@
     "TRACK_HABITS": "Gewohnheiten verfolgen",
     "YOUR_HABITS": "Deine Gewohnheiten",
     "JOURNAL": "Tagebuch",
-    "LANGUAGE": "Sprache"
+    "LANGUAGE": "Sprache",
+    "LOGOUT": "Abmelden"
+  },
+  "AUTH": {
+    "ERROR_DECODING_TOKEN": "Fehler -Dekodierungs -Token",
+    "NO_REFRESH_TOKEN": "Kein Aktualisierungstoken verfügbar"
+  },
+  "LOGIN": {
+    "TITLE": "anmelden",
+    "WELCOME": "Willkommen bei Ihrem Gesundheitspartner",
+    "HELP_TEXT": "Menschen auf der ganzen Welt helfen",
+    "HELP_TEXT_EXTENDED": "Fusce Cursus Tellus A Elit Pharetra Semper. ",
+    "EMAIL": "E-Mail",
+    "EMAIL_REQUIRED": "E -Mail ist erforderlich",
+    "PASSWORD": "Passwort",
+    "PASSWORD_REQUIRED": "Passwort ist erforderlich",
+    "BUTTON": "anmelden",
+    "REGISTER_LINK": "Registrieren",
+    "FORGOT_PASSWORD": "Passwort vergessen",
+    "PLACEHOLDER": {
+      "EMAIL": "Geben Sie Ihre E -Mail ein",
+      "PASSWORD": "Geben Sie Ihr Passwort ein"
+    }
+  },
+  "REGISTER": {
+    "TITLE": "Melden Sie sich an",
+    "FIRST_NAME": "Vorname",
+    "FIRST_NAME_REQUIRED": "Vorname ist erforderlich",
+    "LAST_NAME": "Nachname",
+    "LAST_NAME_REQUIRED": "Nachname ist erforderlich",
+    "EMAIL": "E-Mail",
+    "EMAIL_REQUIRED": "E -Mail ist erforderlich",
+    "EMAIL_INVALID": "E -Mail muss eine gültige E -Mail -Adresse sein",
+    "PASSWORD": "Passwort",
+    "PASSWORD_REQUIRED": "Passwort ist erforderlich",
+    "PASSWORD_LENGTH": "Das Passwort muss mindestens 6 Zeichen betragen",
+    "CONFIRM_PASSWORD": "Passwort bestätigen",
+    "CONFIRM_PASSWORD_REQUIRED": "Bestätigen Sie das Passwort erforderlich",
+    "PASSWORDS_MISMATCH": "Passwörter müssen übereinstimmen",
+    "BUTTON": "Registrieren",
+    "LOGIN_LINK": "anmelden",
+    "SUCCESS_MESSAGE": "Bitte melden Sie sich mit Ihrem neuen Konto an",
+    "ERROR_MESSAGE": "Bei der Registrierung trat ein Fehler auf",
+    "PLACEHOLDER": {
+      "FIRST_NAME": "Geben Sie Ihren Vornamen ein",
+      "LAST_NAME": "Geben Sie Ihren Nachnamen ein",
+      "EMAIL": "Geben Sie Ihre E -Mail ein",
+      "PASSWORD": "Geben Sie Ihr Passwort ein"
+    }
   },
   "DAILY_CHECK": {
     "MAIN_HEADER": "Dein täglicher Check-in",
@@ -21,7 +69,11 @@
     "PREVIOUS": "Zurück",
     "NEXT": "Weiter",
     "SUBMIT": "Absenden",
-    "NO_QUESTIONS": "Keine Fragen verfügbar für diesen täglichen Check-in."
+    "NO_QUESTIONS": "Keine Fragen verfügbar für diesen täglichen Check-in.",
+    "NO_CHECK_TITLE": "Kein täglicher Scheck verfügbar",
+    "NO_CHECK_MESSAGE": "Es sieht so aus, als hätten Sie den heutigen Scheck bereits abgeschlossen oder es gibt momentan keinen verfügbaren.",
+    "NO_CHECK_FOOTER": "Bitte schauen Sie morgen wieder vorbei, um einen neuen täglichen Scheck zu erhalten!",
+    "GO_HOME": "Gehen Sie nach Hause"
   },
   "HABIT_CREATE": {
     "DELETE_TITLE": "Gewohnheit löschen",

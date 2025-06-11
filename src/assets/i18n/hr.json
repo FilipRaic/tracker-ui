@@ -11,7 +11,55 @@
     "TRACK_HABITS": "Prati navike",
     "YOUR_HABITS": "Tvoje navike",
     "JOURNAL": "Dnevnik",
-    "LANGUAGE": "Jezik"
+    "LANGUAGE": "Jezik",
+    "LOGOUT": "Odjava"
+  },
+  "AUTH": {
+    "ERROR_DECODING_TOKEN": "Pogreška dekodiranje tokena",
+    "NO_REFRESH_TOKEN": "Nije dostupan token za osvježavanje"
+  },
+  "LOGIN": {
+    "TITLE": "Prijaviti se",
+    "WELCOME": "Dobrodošli u vašeg zdravstvenog partnera",
+    "HELP_TEXT": "Pomaganje ljudima širom svijeta",
+    "HELP_TEXT_EXTENDED": "Fusce Cursus Tellus elit Pharetra Semper. ",
+    "EMAIL": "E -pošta",
+    "EMAIL_REQUIRED": "Potrebna je e -pošta",
+    "PASSWORD": "Lozinka",
+    "PASSWORD_REQUIRED": "Potrebna je lozinka",
+    "BUTTON": "Prijaviti se",
+    "REGISTER_LINK": "Registar",
+    "FORGOT_PASSWORD": "Zaboravljena lozinka",
+    "PLACEHOLDER": {
+      "EMAIL": "Unesite svoju e -poštu",
+      "PASSWORD": "Unesite svoju lozinku"
+    }
+  },
+  "REGISTER": {
+    "TITLE": "Prijaviti se",
+    "FIRST_NAME": "Ime",
+    "FIRST_NAME_REQUIRED": "Ime je potrebno",
+    "LAST_NAME": "Prezime",
+    "LAST_NAME_REQUIRED": "Prezime je potrebno",
+    "EMAIL": "E -pošta",
+    "EMAIL_REQUIRED": "Potrebna je e -pošta",
+    "EMAIL_INVALID": "E -pošta mora biti valjana adresa e -pošte",
+    "PASSWORD": "Lozinka",
+    "PASSWORD_REQUIRED": "Potrebna je lozinka",
+    "PASSWORD_LENGTH": "Lozinka mora biti najmanje 6 znakova",
+    "CONFIRM_PASSWORD": "Potvrdite lozinku",
+    "CONFIRM_PASSWORD_REQUIRED": "Potvrditi lozinku je potrebna",
+    "PASSWORDS_MISMATCH": "Lozinke se moraju podudarati",
+    "BUTTON": "Registar",
+    "LOGIN_LINK": "Prijaviti se",
+    "SUCCESS_MESSAGE": "Molimo prijavite se sa svojim novim računom",
+    "ERROR_MESSAGE": "Pogreška se dogodila tijekom registracije",
+    "PLACEHOLDER": {
+      "FIRST_NAME": "Unesite svoje ime",
+      "LAST_NAME": "Unesite svoje prezime",
+      "EMAIL": "Unesite svoju e -poštu",
+      "PASSWORD": "Unesite svoju lozinku"
+    }
   },
   "DAILY_CHECK": {
     "MAIN_HEADER": "Tvoja dnevna prijava",
@@ -21,7 +69,11 @@
     "PREVIOUS": "Prethodno",
     "NEXT": "Sljedeće",
     "SUBMIT": "Pošalji",
-    "NO_QUESTIONS": "Nema dostupnih pitanja za ovu dnevnu prijavu."
+    "NO_QUESTIONS": "Nema dostupnih pitanja za ovu dnevnu prijavu.",
+    "NO_CHECK_TITLE": "Nije dostupna dnevna provjera",
+    "NO_CHECK_MESSAGE": "Izgleda da ste već završili današnju provjeru ili trenutno nije dostupna",
+    "NO_CHECK_FOOTER": "Molimo provjerite sutra za novu dnevnu provjeru!",
+    "GO_HOME": "Početna"
   },
   "HABIT_CREATE": {
     "DELETE_TITLE": "Izbriši naviku",
