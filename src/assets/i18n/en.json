@@ -80,5 +80,13 @@
     "WRITE_FOR_JOURNAL": "Write something for your journal",
     "ADD_ENTRY": "Add journal entry",
     "ENTRY_SAVED": "Journal entry saved successfully!"
+  },
+  "DASHBOARD": {
+    "TIPS_AND_TRICKS": "Tips and tricks",
+    "SUGGESTIONS":"Here are some suggestions to help your mental health based on your latest quizzes",
+    "STREAK":"Days streak",
+    "LATEST_QUIZZES":"Latest quizzes",
+    "QUIZ_DESCRIPTION":"Here is what you have been struggling with the last couple of days",
+    "ACHIEVEMENTS":"Latest achievements"
   }
 }

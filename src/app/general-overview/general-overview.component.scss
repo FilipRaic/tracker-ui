@@ -16,6 +16,7 @@
   display: flex;
   gap: 2rem;
   margin-top: 1rem;
+  justify-content: center;
 }
 
 section {
@@ -33,9 +34,15 @@ section {
   font-size: 2rem;
 }
 
+ul {
+  list-style-type: none; 
+}
+
 .achievement {
   background-color: #d9f0ff;
   padding: 1rem;
   border-radius: 10px;
   margin-top: 1rem;
+  text-align: center;
 }
+

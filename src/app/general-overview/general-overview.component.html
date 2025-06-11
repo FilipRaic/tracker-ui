@@ -1,7 +1,7 @@
  <main class="content">
     <section class="tips">
-      <h2>Tips and tricks</h2>
-      <p>Here are some suggestions to help your mental health based on your latest quizzes</p>
+      <h2>{{'DASHBOARD.TIPS_AND_TRICKS' | translate}}</h2>
+      <p>{{'DASHBOARD.SUGGESTIONS' | translate}}</p>
       <ol>
         <li *ngFor="let tip of tips">{{ tip.tipText }}</li>
       </ol>
@@ -10,31 +10,24 @@
     <section class="streak">
       <div class="emoji">🐻</div>
       <div class="streak-count">45</div>
-      <p>Days streak</p>
+      <p>{{'DASHBOARD.STREAK' | translate}}</p>
 
       <div class="quizzes">
-        <h3>Latest quizzes</h3>
-        <p>Here is what you have been struggling with the last couple of days</p>
-        <ul>
-          <li>Depression</li>
-          <li>Anxiety</li>
-          <li>Schizophrenia</li>
-        </ul>
-        <button>Open journal</button>
-      </div>
+  <h3>{{'DASHBOARD.LATEST_QUIZZES' | translate}}</h3>
+  <p>{{'DASHBOARD.QUIZ_DESCRIPTION' | translate}}</p>
+  <ul>
+    <li *ngFor="let issue of mentalIssues">{{ issue }}</li>
+  </ul>
+</div>
     </section>
 
     <section class="achievements">
-      <h2>Latest achievements</h2>
-      <div class="achievement">
-        <div class="emoji">🤞</div>
-        <h3>Goodluck!</h3>
-        <p>You took your first daily quiz</p>
-      </div>
-      <div class="achievement">
-        <div class="emoji">🐻</div>
-        <h3>Bear with me</h3>
-        <p>You took your daily quizzes 3 days in a row</p>
-      </div>
-    </section>
+  <h2>{{'DASHBOARD.ACHIEVEMENTS' | translate}}</h2>
+  <div class="achievement" *ngFor="let achievement of achievements">
+    <div class="emoji">{{ achievement.emoji }}</div>
+    <h2>{{achievement.name}}</h2>
+    <h3>{{ achievement.title }}</h3>
+    <p>{{ achievement.description }}</p>
+  </div>
+</section>
   </main>

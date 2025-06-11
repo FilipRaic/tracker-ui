@@ -80,5 +80,13 @@
     "WRITE_FOR_JOURNAL": "Schreibe etwas für dein Tagebuch",
     "ADD_ENTRY": "Tagebucheintrag hinzufügen",
     "ENTRY_SAVED": "Tagebucheintrag erfolgreich gespeichert!"
+  },
+  "DASHBOARD": {
+    "TIPS_AND_TRICKS": "Tipps und Tricks",
+    "SUGGESTIONS": "Hier sind einige Vorschläge, die Ihre mentale Gesundheit basierend auf Ihren neuesten Quizzen unterstützen",
+    "STREAK": "Tage in Folge",
+    "LATEST_QUIZZES": "Neueste Quizze",
+    "QUIZ_DESCRIPTION": "Hier sehen Sie, womit Sie in den letzten Tagen Schwierigkeiten hatten",
+    "ACHIEVEMENTS": "Neueste Erfolge"
   }
 }

@@ -80,5 +80,13 @@
     "WRITE_FOR_JOURNAL": "Napiši nešto za svoj dnevnik",
     "ADD_ENTRY": "Dodaj unos u dnevnik",
     "ENTRY_SAVED": "Unos je uspješno spremljen u dnevnik!"
+  },
+    "DASHBOARD": {
+    "TIPS_AND_TRICKS": "Savjeti i trikovi",
+    "SUGGESTIONS": "Evo nekoliko prijedloga koji će vam pomoći u održavanju mentalnog zdravlja na temelju vaših zadnjih kvizova",
+    "STREAK": "Dani u nizu",
+    "LATEST_QUIZZES": "Najnoviji kvizovi",
+    "QUIZ_DESCRIPTION": "Ovo su teme s kojima ste se borili posljednjih nekoliko dana",
+    "ACHIEVEMENTS": "Najnovija postignuća"
   }
 }
