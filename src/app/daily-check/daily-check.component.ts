@@ -6,7 +6,7 @@ import {DailyCheckService} from '../service/daily-check.service';
 import {DailyCheck, DailyQuestion} from '../model/DailyCheck';
 import {NotificationService} from '../service/notification.service';
 import {Observable, tap} from 'rxjs';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-daily-check',
@@ -19,12 +19,14 @@ export class DailyCheckComponent implements OnInit {
   dailyCheck$ = new Observable<DailyCheck | null>();
   currentQuestionIndex = 0;
   currentQuestion: DailyQuestion | null = null;
+  currentLang = 'en';
 
   constructor(
     private readonly router: Router,
     private readonly route: ActivatedRoute,
     private readonly dailyCheckService: DailyCheckService,
-    private readonly notificationService: NotificationService
+    private readonly notificationService: NotificationService,
+    private readonly translate: TranslateService
   ) {
   }
 
@@ -32,6 +34,9 @@ export class DailyCheckComponent implements OnInit {
     this.route.params.subscribe(params => {
       const uuid = params['uuid'];
       this.loadDailyCheck(uuid);
+      if(this.translate.currentLang != null){
+        this.currentLang = this.translate.currentLang;
+      }
     });
   }
 
@@ -85,8 +90,7 @@ export class DailyCheckComponent implements OnInit {
 
     const allQuestionsAnswered = dailyCheck.questions.every(q => q.score !== null);
     if (!allQuestionsAnswered) {
-      this.notificationService.addNotification('Please answer all questions before submitting', 'error');
-
+      this.notificationService.addNotification(this.translate.instant('DAILY_CHECK.ERROR_QUESTIONS_NOT_FILLED'), 'error');
       return;
     }
 
@@ -97,7 +101,7 @@ export class DailyCheckComponent implements OnInit {
 
     this.dailyCheckService.submitDailyCheck(dailyCheckSubmit).subscribe({
       next: () => {
-        this.notificationService.addNotification('Daily check submitted', 'success')
+        this.notificationService.addNotification(this.translate.instant('DAILY_CHECK.CHECK_SUBMITTED'), 'success')
         this.router.navigate(['/']).then();
       }
     });

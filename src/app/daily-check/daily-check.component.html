@@ -31,7 +31,9 @@
     </div>
 
     <div *ngIf="currentQuestion" class="question-container text-center" data-testid="question-container">
-      <h2 class="question-content mb-4" data-testid="question-content">{{ currentQuestion.content }}</h2>
+      <h2 *ngIf="currentLang === 'en'" class="question-content mb-4" data-testid="question-content">{{ currentQuestion.content }}</h2>
+      <h2 *ngIf="currentLang === 'de'" class="question-content mb-4" data-testid="question-content">{{ currentQuestion.contentDe }}</h2>
+      <h2 *ngIf="currentLang === 'hr'" class="question-content mb-4" data-testid="question-content">{{ currentQuestion.contentHr }}</h2>
 
       <div class="score-buttons mb-4 d-flex justify-content-center gap-3" data-testid="score-buttons">
         <button *ngFor="let score of [1, 2, 3, 4, 5]"
