@@ -1,0 +1,43 @@
+.register-container {
+  min-height: 100vh;
+}
+
+.gradient {
+  background: transparent;
+  background: linear-gradient(0deg, transparent 50%, rgba(34, 154, 202, 1) 50%);
+}
+
+.card {
+  border: none;
+  border-radius: 0.75rem;
+  max-width: 400px;
+  width: 100%;
+}
+
+.bg-primary {
+  background-color: #229ACA !important;
+}
+
+.btn-primary {
+  background-color: #229ACA;
+  border-color: #229ACA;
+}
+
+.btn-primary:hover {
+  background-color: #48B4E0;
+  border-color: #48B4E0;
+}
+
+.btn-outline-success {
+  border-color: #679D7A;
+  color: #679D7A;
+}
+
+.btn-outline-success:hover {
+  background-color: #789783;
+  color: #fff;
+}
+
+.invalid-feedback {
+  display: block;
+}

@@ -7,8 +7,12 @@ import {userEvent} from '@testing-library/user-event';
 import {NavbarComponent} from './navbar.component';
 import {NullComponent} from '../shared/null-component';
 import {TranslateTestingModule} from 'ngx-translate-testing';
+import {mock} from 'ts-mockito';
+import {AuthService} from '../service/auth.service';
 
 describe('NavbarComponent', () => {
+  const authServiceMock = mock(AuthService);
+
   const renderOptions = {
     imports: [
       CommonModule,
@@ -18,9 +22,15 @@ describe('NavbarComponent', () => {
         {path: 'habit/create', component: NullComponent}
       ]),
       NavbarComponent,
-      TranslateTestingModule.withTranslations({ en: require('../../../src/assets/i18n/en.json')})
+      TranslateTestingModule.withTranslations({en: require('../../../src/assets/i18n/en.json')})
     ],
-    declarations: []
+    declarations: [],
+    providers: [
+      {
+        provide: AuthService,
+        useValue: authServiceMock
+      },
+    ]
   };
 
   beforeAll(() => {

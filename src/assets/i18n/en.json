@@ -11,7 +11,55 @@
     "TRACK_HABITS": "Track Habits",
     "YOUR_HABITS": "Your Habits",
     "JOURNAL": "Journal",
-    "LANGUAGE": "Language"
+    "LANGUAGE": "Language",
+    "LOGOUT": "Logout"
+  },
+  "AUTH": {
+    "ERROR_DECODING_TOKEN": "Error decoding token",
+    "NO_REFRESH_TOKEN": "No refresh token available"
+  },
+  "LOGIN": {
+    "TITLE": "Sign in",
+    "WELCOME": "Welcome to your health partner",
+    "HELP_TEXT": "Helping people around the world",
+    "HELP_TEXT_EXTENDED": "Fusce cursus tellus a elit pharetra semper. Proin porta eu lacus a convallis. Fusce eget eros at orci posuere aliquam a at felis. Pellentesque viverra nulla at est aliquam vehicula. Phasellus vulputate quis nisl vel ultrices. Nulla feugiat massa id ante finibus ullamcorper. Aliquam erat volutpat. Cras tincidunt efficitur pellentesque.",
+    "EMAIL": "Email",
+    "EMAIL_REQUIRED": "Email is required",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIRED": "Password is required",
+    "BUTTON": "Sign in",
+    "REGISTER_LINK": "Register",
+    "FORGOT_PASSWORD": "Forgot password",
+    "PLACEHOLDER": {
+      "EMAIL": "Enter your email",
+      "PASSWORD": "Enter your password"
+    }
+  },
+  "REGISTER": {
+    "TITLE": "Sign up",
+    "FIRST_NAME": "First Name",
+    "FIRST_NAME_REQUIRED": "First Name is required",
+    "LAST_NAME": "Last Name",
+    "LAST_NAME_REQUIRED": "Last Name is required",
+    "EMAIL": "Email",
+    "EMAIL_REQUIRED": "Email is required",
+    "EMAIL_INVALID": "Email must be a valid email address",
+    "PASSWORD": "Password",
+    "PASSWORD_REQUIRED": "Password is required",
+    "PASSWORD_LENGTH": "Password must be at least 6 characters",
+    "CONFIRM_PASSWORD": "Confirm Password",
+    "CONFIRM_PASSWORD_REQUIRED": "Confirm Password is required",
+    "PASSWORDS_MISMATCH": "Passwords must match",
+    "BUTTON": "Register",
+    "LOGIN_LINK": "Sign in",
+    "SUCCESS_MESSAGE": "Please login with your new account",
+    "ERROR_MESSAGE": "An error occurred during registration",
+    "PLACEHOLDER": {
+      "FIRST_NAME": "Enter your first name",
+      "LAST_NAME": "Enter your last name",
+      "EMAIL": "Enter your email",
+      "PASSWORD": "Enter your password"
+    }
   },
   "DAILY_CHECK": {
     "MAIN_HEADER": "Your daily check in",
@@ -21,7 +69,11 @@
     "PREVIOUS": "Previous",
     "NEXT": "Next",
     "SUBMIT": "Submit",
-    "NO_QUESTIONS": "No questions available for this daily check."
+    "NO_QUESTIONS": "No questions available for this daily check.",
+    "NO_CHECK_TITLE": "No Daily Check Available",
+    "NO_CHECK_MESSAGE": "It looks like you've already completed today's check or there isn't one available right now.",
+    "NO_CHECK_FOOTER": "Please check back tomorrow for a new daily check!",
+    "GO_HOME": "Go to Home"
   },
   "HABIT_CREATE": {
     "DELETE_TITLE": "Delete Habit",

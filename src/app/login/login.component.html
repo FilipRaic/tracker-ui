@@ -1,0 +1,52 @@
+<div class="register-container d-flex vh-100">
+  <div class="gradient bg-light col-2"></div>
+  <div class="gradient col-4 bg-light text-white ps-5 d-flex flex-column justify-content-center">
+    <h1 class="display-4 mb-5 pb-5">{{ 'LOGIN.WELCOME' | translate }}</h1>
+    <p class="lead text-black fw-bold mt-5 pt-5">{{ 'LOGIN.HELP_TEXT' | translate }}</p>
+    <p class="lead text-black mt-2">{{ 'LOGIN.HELP_TEXT_EXTENDED' | translate }}</p>
+  </div>
+  <div class="gradient col-6 bg-light p-5 d-flex justify-content-center align-items-center">
+    <div class="card p-4 shadow-lg">
+      <h2 class="card-title mb-4">{{ 'LOGIN.TITLE' | translate }}</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="email" class="form-label">{{ 'LOGIN.EMAIL' | translate }}</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="{{'LOGIN.PLACEHOLDER.EMAIL' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+          />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">{{ 'LOGIN.EMAIL_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">{{ 'LOGIN.PASSWORD' | translate }}</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="{{'LOGIN.PLACEHOLDER.PASSWORD' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">{{ 'LOGIN.PASSWORD_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary w-75 mb-3 me-3">{{ 'LOGIN.BUTTON' | translate }}</button>
+          <a routerLink="/register"
+             class="btn btn-outline-success w-25 mb-3">{{ 'LOGIN.REGISTER_LINK' | translate }}</a>
+        </div>
+        <a routerLink="/forgot-password"
+           class="text-decoration-none text-muted">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
+      </form>
+    </div>
+  </div>
+</div>

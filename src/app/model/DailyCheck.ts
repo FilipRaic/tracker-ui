@@ -16,6 +16,7 @@ export interface DailyCheck {
   id?: number;
   questions: DailyQuestion[];
   completed: boolean;
+  userFirstName: string;
 }
 
 export interface DailyCheckSubmit {

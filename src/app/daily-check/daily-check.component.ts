@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {DailyCheckService} from '../service/daily-check.service';
 import {DailyCheck, DailyQuestion} from '../model/DailyCheck';
 import {NotificationService} from '../service/notification.service';
@@ -11,7 +11,7 @@ import {TranslatePipe} from '@ngx-translate/core';
 @Component({
   selector: 'app-daily-check',
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslatePipe],
+  imports: [CommonModule, FormsModule, TranslatePipe, RouterLink],
   templateUrl: './daily-check.component.html',
   styleUrl: './daily-check.component.scss'
 })
@@ -86,6 +86,7 @@ export class DailyCheckComponent implements OnInit {
     const allQuestionsAnswered = dailyCheck.questions.every(q => q.score !== null);
     if (!allQuestionsAnswered) {
       this.notificationService.addNotification('Please answer all questions before submitting', 'error');
+
       return;
     }
 

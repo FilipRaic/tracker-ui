@@ -16,7 +16,11 @@ import {NgIf} from '@angular/common';
 export class AppComponent implements OnInit, OnDestroy {
   showNavbar = true;
   private routerSubscription: Subscription | null = null;
-  private readonly routesToHideNavbar = ['/daily-check'];
+  private readonly routesToHideNavbar = [
+    '/daily-check',
+    '/login',
+    '/register'
+  ];
 
   constructor(private readonly router: Router) {
   }
@@ -25,7 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
     this.routerSubscription = this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
-      this.showNavbar = !event.url.includes(this.routesToHideNavbar);
+      const isMatch = this.routesToHideNavbar.some(item => event.url.includes(item));
+      this.showNavbar = !isMatch;
     });
   }
 
