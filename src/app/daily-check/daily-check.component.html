@@ -1,0 +1,67 @@
+<div class="container-fluid p-0" data-testid="daily-check-container">
+  <div class="header-bar text-center">
+    <h1 data-testid="daily-check-title">{{ 'DAILY_CHECK.MAIN_HEADER' | translate }}</h1>
+  </div>
+
+  <div *ngIf="dailyCheck$ | async as dailyCheck" class="daily-check-container" data-testid="daily-check-content">
+    <div class="greeting mb-4 text-center">
+      <h2 data-testid="greeting-title">
+        {{ ('DAILY_CHECK.HI' | translate) + " Andrew" + ('DAILY_CHECK.SECONDARY_HEADER' | translate) }}
+      </h2>
+      <p data-testid="greeting-text">{{ 'DAILY_CHECK.INSTRUCTION' | translate }}</p>
+    </div>
+
+    <div class="progress-container mb-4" data-testid="progress-container">
+      <div class="step-indicators d-flex justify-content-center align-items-center position-relative">
+        <div *ngFor="let question of dailyCheck.questions; let i = index; let isLast = last">
+          <div class="step-wrapper">
+            <div class="step-line" *ngIf="!isLast"></div>
+            <div class="step-indicator"
+                 [class.active]="i === currentQuestionIndex"
+                 [class.unanswered]="!isQuestionAnswered(i, dailyCheck) && i !== currentQuestionIndex"
+                 [class.completed]="isQuestionAnswered(i, dailyCheck)"
+                 [attr.data-testid]="'step-indicator-' + i">
+              <span *ngIf="isQuestionAnswered(i, dailyCheck)">✓</span>
+              <span *ngIf="!isQuestionAnswered(i, dailyCheck)">{{ i + 1 }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="currentQuestion" class="question-container text-center" data-testid="question-container">
+      <h2 class="question-content mb-4" data-testid="question-content">{{ currentQuestion.content }}</h2>
+
+      <div class="score-buttons mb-4 d-flex justify-content-center gap-3" data-testid="score-buttons">
+        <button *ngFor="let score of [1, 2, 3, 4, 5]"
+                class="btn score-btn"
+                [class.selected]="currentQuestion.score === score"
+                (click)="setScore(currentQuestion, score)"
+                [attr.data-testid]="'score-button-' + score">
+          {{ score }}
+        </button>
+      </div>
+
+      <div class="navigation-buttons d-flex justify-content-center gap-3" data-testid="navigation-buttons">
+        <button class="btn btn-secondary"
+                *ngIf="currentQuestionIndex > 0"
+                (click)="previousQuestion(dailyCheck)"
+                data-testid="previous-button">
+          {{ 'DAILY_CHECK.PREVIOUS' | translate }}
+        </button>
+        <button class="btn btn-primary"
+                [disabled]="!canGoNext()"
+                (click)="nextQuestion(dailyCheck)"
+                data-testid="next-button">
+          {{ (currentQuestionIndex !== (dailyCheck.questions.length - 1) ?
+            'DAILY_CHECK.NEXT' : 'DAILY_CHECK.SUBMIT') | translate}}
+        </button>
+      </div>
+    </div>
+
+    <div *ngIf="dailyCheck.questions.length < 1" class="alert alert-info text-center"
+         data-testid="no-questions-message">
+      {{ 'DAILY_CHECK.NO_QUESTIONS' | translate }}
+    </div>
+  </div>
+</div>

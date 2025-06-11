@@ -1,33 +1,53 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #229ACA;">
+<nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">Habit tracker for mental health</a>
+    <a class="navbar-brand" routerLink="/">{{ 'NAV.HEADER' | translate }}</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+            aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Navigation Links -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown" data-testid="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+          <a class="nav-link" routerLink="/" routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">{{ 'NAV.HOME' | translate }}</a>
         </li>
 
-        <!-- Habits Dropdown -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="habitsDropdown" role="button" data-bs-toggle="dropdown"
-             aria-expanded="false">
-            Habit
+          <a class="nav-link dropdown-toggle" href="#" id="habitsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            {{ 'NAV.HABIT' | translate }}
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="habitsDropdown">
-            <li><a class="dropdown-item" routerLink="/habit/create">Your Habits</a></li>
+            <li><a class="dropdown-item" routerLink="/habit/status">{{ 'NAV.TRACK_HABITS' | translate }}</a></li>
+            <li><a class="dropdown-item" routerLink="/habit/create">{{ 'NAV.YOUR_HABITS' | translate }}</a></li>
           </ul>
         </li>
-            <li class="nav-item">
-            <a class="nav-link" routerLink="/journal" routerLinkActive="active">Journal</a>
-          </li>
-        </ul>
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/journal" routerLinkActive="active">{{ 'NAV.JOURNAL' | translate }}</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="languageDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            <img [src]="'assets/images/' + currentLang + '.png'" width="24" height="24" alt="Language Flag" />
+            {{ 'LANGUAGE.' + currentLang.toUpperCase() | translate }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+            <li *ngFor="let lang of languages">
+              <button class="dropdown-item d-flex align-items-center gap-2"
+                      (click)="switchLanguage(lang)">
+                <img [src]="'assets/images/' + lang + '.png'" width="24" height="24"
+                     alt="{{ 'LANGUAGE.' + lang.toUpperCase() | translate }}" />
+                {{ 'LANGUAGE.' + lang.toUpperCase() | translate }}
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

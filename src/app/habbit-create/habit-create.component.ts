@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {Habit} from '../model/Habit';
@@ -12,21 +12,26 @@ import {
   Validators
 } from '@angular/forms';
 import {HabitService} from '../service/habit.service';
-import {ErrorPopupComponent} from '../error-popup/error-popup.component';
+import {CustomDialogComponent} from '../custom-dialog/custom-dialog.component';
+import {NotificationService} from '../service/notification.service';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-habit-create',
   standalone: true,
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, ErrorPopupComponent],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, CustomDialogComponent, TranslatePipe],
   templateUrl: './habit-create.component.html',
   styleUrl: './habit-create.component.scss'
 })
 export class HabitCreateComponent {
-  @ViewChild('errorPopup') errorPopup!: ErrorPopupComponent;
   habits: Habit[] = [];
   habitForm: FormGroup;
+  showConfirmDialog: boolean = false;
+  pendingDeleteId: number | undefined = undefined;
 
-  constructor(private readonly fb: FormBuilder, private readonly habitService: HabitService) {
+  constructor(private readonly fb: FormBuilder, private readonly habitService: HabitService,
+              private notificationService: NotificationService,
+              private translate: TranslateService) {
     this.habitForm = this.fb.group({
       name: ['', Validators.required],
       frequency: ['', Validators.required],
@@ -38,8 +43,7 @@ export class HabitCreateComponent {
 
   private loadHabits(): void {
     this.habitService.getAllHabits().subscribe({
-      next: (data) => (this.habits = data),
-      error: (err) => this.handleApiError(err)
+      next: (data) => (this.habits = data)
     });
   }
 
@@ -51,12 +55,31 @@ export class HabitCreateComponent {
         next: (created) => {
           this.habits.push(created);
           this.habitForm.reset();
-        },
-        error: (err) => this.handleApiError(err)
+        }
       });
     } else {
       this.showValidationErrors();
     }
+  }
+
+  onDeleteClick(habitId: number | undefined) {
+    this.pendingDeleteId = habitId;
+    this.showConfirmDialog = true;
+  }
+
+  onConfirmDelete() {
+    this.showConfirmDialog = false;
+    this.deleteHabit(this.pendingDeleteId);
+  }
+
+  private deleteHabit(habitId: number | undefined): void {
+    if (!habitId) return;
+
+    this.habitService.deleteHabit(habitId).subscribe({
+      next: () => {
+        this.habits = this.habits.filter(h => h.id !== habitId)
+      }
+    });
   }
 
   private showValidationErrors() {
@@ -65,22 +88,17 @@ export class HabitCreateComponent {
     Object.keys(this.habitForm.controls).forEach(field => {
       const control = this.habitForm.get(field);
       if (control?.hasError('isoDate')) {
-        validationErrors.push(`${field} must be in ISO format (YYYY-MM-DD)`)
+        validationErrors.push(`${field} ` + this.translate.instant('HABIT_CREATE.ERROR.DATE_ISO_FORMAT'))
       } else if (control?.hasError('dateInPast')) {
-        validationErrors.push(`${field} cannot be in the past`)
+        validationErrors.push(`${field} ` + this.translate.instant('HABIT_CREATE.ERROR.PRESENT_OR_FUTURE'))
       } else if (control?.hasError('required')) {
-        validationErrors.push(`${field} is required or invalid`);
+        validationErrors.push(`${field} ` + this.translate.instant('HABIT_CREATE.ERROR.REQUIRED'))
       }
     });
 
     if (validationErrors.length > 0) {
-      this.errorPopup.showFailedValidations(validationErrors);
+      validationErrors.forEach(err => this.notificationService.addNotification(err, "error"))
     }
-  }
-
-  private handleApiError(error: any) {
-    const msg = error?.error?.message ?? 'An unknown error occurred';
-    this.errorPopup.showErrors(msg);
   }
 
   private isoDateValidator(): ValidatorFn {

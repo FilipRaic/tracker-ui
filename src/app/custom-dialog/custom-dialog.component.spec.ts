@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorPopupComponent } from './error-popup.component';
+import { CustomDialogComponent } from './custom-dialog.component';
 
-describe('ErrorPopupComponent', () => {
-  let component: ErrorPopupComponent;
-  let fixture: ComponentFixture<ErrorPopupComponent>;
+describe('CustomDialogComponent', () => {
+  let component: CustomDialogComponent;
+  let fixture: ComponentFixture<CustomDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ErrorPopupComponent]
+      imports: [CustomDialogComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ErrorPopupComponent);
+    fixture = TestBed.createComponent(CustomDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

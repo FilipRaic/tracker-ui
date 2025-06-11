@@ -1,0 +1,84 @@
+{
+  "LANGUAGE": {
+    "EN": "English",
+    "HR": "Croatian",
+    "DE": "German"
+  },
+  "NAV": {
+    "HEADER": "Habit tracker for mental health",
+    "HOME": "Home",
+    "HABIT": "Habit",
+    "TRACK_HABITS": "Track Habits",
+    "YOUR_HABITS": "Your Habits",
+    "JOURNAL": "Journal",
+    "LANGUAGE": "Language"
+  },
+  "DAILY_CHECK": {
+    "MAIN_HEADER": "Your daily check in",
+    "HI": "Hi",
+    "SECONDARY_HEADER": ", hope you're doing great!",
+    "INSTRUCTION": "Please answer some questions so we can get a feel for you feels \uD83D\uDE0A",
+    "PREVIOUS": "Previous",
+    "NEXT": "Next",
+    "SUBMIT": "Submit",
+    "NO_QUESTIONS": "No questions available for this daily check."
+  },
+  "HABIT_CREATE": {
+    "DELETE_TITLE": "Delete Habit",
+    "DELETE_MESSAGE": "Are you sure you want to delete this habit?",
+    "DELETE_CONFIRM": "Delete",
+    "DELETE_CANCEL": "Cancel",
+    "TABLE_HEADER": "Your Habits",
+    "ROW_START_DATE": "Starts",
+    "FREQUENCY": {
+      "DAY": "day",
+      "WEEK": "week",
+      "MONTH": "month",
+      "YEAR": "year"
+    },
+    "NO_HABITS": "You haven’t created any habits yet.",
+    "ENCOURAGE": {
+      "CLICK": "Click",
+      "ADD_NEW": "+ Add New Habit",
+      "END": "to start building your routine!"
+    },
+    "ADD_FORM": {
+      "HABIT_NAME": "Habit Name",
+      "HABIT_NAME_PLACEHOLDER": "Enter habit name",
+      "HABIT_FREQUENCY": "Frequency",
+      "HABIT_FREQUENCY_PLACEHOLDER": "Select frequency",
+      "HABIT_FREQUENCY_DAY": "Daily",
+      "HABIT_FREQUENCY_WEEK": "Weekly",
+      "HABIT_FREQUENCY_MONTH": "Monthly",
+      "HABIT_FREQUENCY_YEAR": "Yearly",
+      "HABIT_START_DATE": "Start Date",
+      "HABIT_NOTES": "Notes (optional)",
+      "HABIT_NOTES_PLACEHOLDER": "Additional details...",
+      "SUBMIT": "Submit Habit"
+    },
+    "ERROR": {
+      "DATE_ISO_FORMAT": "must be in ISO format (YYYY-MM-DD)",
+      "PRESENT_OR_FUTURE": "cannot be in the past",
+      "REQUIRED": "is required or invalid"
+    }
+  },
+  "HABIT_STATUS": {
+    "TABLE_HEADER": "Current state of Habits",
+    "ROW_DUE_DATE": "Due",
+    "ROW_REMAINING": "remaining",
+    "MARK_BUTTON_DONE": "✓ Done",
+    "MARK_BUTTON_NOT_DONE": "Mark as Done",
+    "NO_HABITS_COMPLETE": "No habits to complete today.",
+    "ENJOY_PROGRESS": "Enjoy your progress!"
+  },
+  "JOURNAL": {
+    "HEADER": "Journal entry from date:",
+    "HEADER_SELECTED_DATE": "Journal entry from selected date:",
+    "NO_JOURNAL_ENTRIES": "You haven't written any journal entries yet. Start journaling to track your thoughts and feelings!",
+    "DATE_CLICK": "Click a date to view the entry.",
+    "DELETE": "Delete",
+    "WRITE_FOR_JOURNAL": "Write something for your journal",
+    "ADD_ENTRY": "Add journal entry",
+    "ENTRY_SAVED": "Journal entry saved successfully!"
+  }
+}
