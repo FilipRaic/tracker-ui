@@ -3,10 +3,11 @@
     <h1 data-testid="daily-check-title">{{ 'DAILY_CHECK.MAIN_HEADER' | translate }}</h1>
   </div>
 
-  <div *ngIf="dailyCheck$ | async as dailyCheck" class="daily-check-container" data-testid="daily-check-content">
+  <div *ngIf="dailyCheck$ | async as dailyCheck; else noDailyCheck" class="daily-check-container"
+       data-testid="daily-check-content">
     <div class="greeting mb-4 text-center">
       <h2 data-testid="greeting-title">
-        {{ ('DAILY_CHECK.HI' | translate) + " Andrew" + ('DAILY_CHECK.SECONDARY_HEADER' | translate) }}
+        {{ ('DAILY_CHECK.HI' | translate) + " " + dailyCheck.userFirstName + ('DAILY_CHECK.SECONDARY_HEADER' | translate) }}
       </h2>
       <p data-testid="greeting-text">{{ 'DAILY_CHECK.INSTRUCTION' | translate }}</p>
     </div>
@@ -53,8 +54,10 @@
                 [disabled]="!canGoNext()"
                 (click)="nextQuestion(dailyCheck)"
                 data-testid="next-button">
-          {{ (currentQuestionIndex !== (dailyCheck.questions.length - 1) ?
-            'DAILY_CHECK.NEXT' : 'DAILY_CHECK.SUBMIT') | translate}}
+          {{
+            (currentQuestionIndex !== (dailyCheck.questions.length - 1) ?
+              'DAILY_CHECK.NEXT' : 'DAILY_CHECK.SUBMIT') | translate
+          }}
         </button>
       </div>
     </div>
@@ -64,4 +67,20 @@
       {{ 'DAILY_CHECK.NO_QUESTIONS' | translate }}
     </div>
   </div>
+
+  <ng-template #noDailyCheck>
+    <div class="row justify-content-center m-4">
+      <div class="col-md-8 col-lg-6">
+        <div class="alert alert-info text-center" role="alert" data-testid="no-daily-check-message">
+          <h4 class="alert-heading mb-3">{{ 'DAILY_CHECK.NO_CHECK_TITLE' | translate }}</h4>
+          <p class="mb-3">{{ 'DAILY_CHECK.NO_CHECK_MESSAGE' | translate }}</p>
+          <hr>
+          <p class="mb-3">{{ 'DAILY_CHECK.NO_CHECK_FOOTER' | translate }}</p>
+          <button class="btn btn-primary" routerLink="/" data-testid="home-button">
+            {{ 'DAILY_CHECK.GO_HOME' | translate }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 </div>

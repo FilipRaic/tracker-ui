@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {AuthService} from '../service/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,9 +19,12 @@ export class NavbarComponent {
     'de'
   ];
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private readonly authService: AuthService,
+    private readonly translate: TranslateService,
+  ) {
     let savedLang = localStorage.getItem('language');
-    if(savedLang == null) {
+    if (savedLang == null) {
       const browserLang = translate.getBrowserLang();
       savedLang = browserLang && ['en', 'hr', 'de'].includes(browserLang) ? browserLang : 'en';
     }
@@ -31,5 +35,9 @@ export class NavbarComponent {
     this.translate.use(lang);
     this.currentLang = lang;
     localStorage.setItem('language', lang);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {instance, mock, when} from 'ts-mockito';
 import {of} from 'rxjs';
 
-const JOURNAL_API_URL = 'http://localhost:8080/api/journal';
+const JOURNAL_API_URL = '/api/journal';
 
 describe('JournalService', () => {
   const httpClientMock = mock(HttpClient);

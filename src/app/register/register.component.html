@@ -1,0 +1,82 @@
+<div class="login-container d-flex vh-100">
+  <div class="gradient bg-light col-2"></div>
+  <div class="gradient col-4 bg-light text-white ps-5 d-flex flex-column justify-content-center">
+    <h1 class="display-4 mb-5 pb-5">{{ 'LOGIN.WELCOME' | translate }}</h1>
+    <p class="lead text-black fw-bold mt-5 pt-5">{{ 'LOGIN.HELP_TEXT' | translate }}</p>
+    <p class="lead text-black mt-2">{{ 'LOGIN.HELP_TEXT_EXTENDED' | translate }}</p>
+  </div>
+  <div class="gradient col-6 bg-light p-5 d-flex justify-content-center align-items-center">
+    <div class="card p-4 shadow-lg">
+      <h2 class="card-title mb-4">{{ 'REGISTER.TITLE' | translate }}</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="email" class="form-label">{{ 'REGISTER.FIRST_NAME' | translate }}</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            class="form-control"
+            placeholder="{{'REGISTER.PLACEHOLDER.FIRST_NAME' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }"
+          />
+          <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors['required']">{{ 'REGISTER.FIRST_NAME_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">{{ 'REGISTER.LAST_NAME' | translate }}</label>
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            class="form-control"
+            placeholder="{{'REGISTER.PLACEHOLDER.LAST_NAME' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }"
+          />
+          <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastName'].errors['required']">{{ 'REGISTER.LAST_NAME_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">{{ 'REGISTER.EMAIL' | translate }}</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="{{'REGISTER.PLACEHOLDER.EMAIL' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+          />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">{{ 'REGISTER.EMAIL_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">{{ 'REGISTER.PASSWORD' | translate }}</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+            placeholder="{{'REGISTER.PLACEHOLDER.PASSWORD' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors['required']">{{ 'REGISTER.PASSWORD_REQUIRED' | translate }}</div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <a routerLink="/login"
+             class="btn btn-outline-success w-25 mb-3 me-3">{{ 'REGISTER.LOGIN_LINK' | translate }}</a>
+          <button type="submit" class="btn btn-primary w-75 mb-3">{{ 'REGISTER.BUTTON' | translate }}</button>
+        </div>
+        <a routerLink="/forgot-password"
+           class="text-decoration-none text-muted">{{ 'LOGIN.FORGOT_PASSWORD' | translate }}</a>
+      </form>
+    </div>
+  </div>
+</div>

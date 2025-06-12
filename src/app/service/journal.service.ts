@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { JournalEntry } from '../model/JournalEntry';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {JournalEntry} from '../model/JournalEntry';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class JournalService {
-  private apiUrl = 'http://localhost:8080/api/journal';
+  private readonly apiUrl = '/api/journal';
 
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {
+  }
 
   getAllEntries(): Observable<JournalEntry[]> {
     return this.http.get<JournalEntry[]>(this.apiUrl);
@@ -22,10 +23,10 @@ export class JournalService {
   }
 
   putEntry(entry: JournalEntry): Observable<JournalEntry> {
-  return this.http.put<JournalEntry>(`${this.apiUrl}/${entry.date}`, entry);
-}
+    return this.http.put<JournalEntry>(`${this.apiUrl}/${entry.date}`, entry);
+  }
 
   deleteEntry(date: string): Observable<void> {
-  return this.http.delete<void>(`${this.apiUrl}/${date}`);
-}
+    return this.http.delete<void>(`${this.apiUrl}/${date}`);
+  }
 }
