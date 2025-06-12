@@ -26,8 +26,11 @@ export class RegisterComponent implements OnInit {
   ) {
   }
 
+  get f() {
+    return this.registerForm.controls;
+  }
+
   ngOnInit(): void {
-    // Initialize the registration form
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -38,13 +41,11 @@ export class RegisterComponent implements OnInit {
       validator: this.passwordMatchValidator
     });
 
-    // Redirect to home if already logged in
     if (this.authService.isLoggedIn) {
       this.router.navigate(['/']);
     }
   }
 
-  // Custom validator to check if password and confirm password match
   passwordMatchValidator(formGroup: FormGroup) {
     const password = formGroup.get('password')?.value;
     const confirmPassword = formGroup.get('confirmPassword')?.value;
@@ -56,15 +57,10 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  // Convenience getter for easy access to form fields
-  get f() {
-    return this.registerForm.controls;
-  }
-
   onSubmit(): void {
+    console.log('SUBMIT REGISTER -', this.registerForm.invalid);
     this.submitted = true;
 
-    // Stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
@@ -80,7 +76,7 @@ export class RegisterComponent implements OnInit {
         this.translate.get('REGISTER.SUCCESS_MESSAGE').subscribe(translation => {
           this.notificationService.addNotification(translation, 'success');
         });
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login']).then();
       },
     });
   }

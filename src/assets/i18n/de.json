@@ -58,7 +58,8 @@
       "FIRST_NAME": "Geben Sie Ihren Vornamen ein",
       "LAST_NAME": "Geben Sie Ihren Nachnamen ein",
       "EMAIL": "Geben Sie Ihre E -Mail ein",
-      "PASSWORD": "Geben Sie Ihr Passwort ein"
+      "PASSWORD": "Geben Sie Ihr Passwort ein",
+      "CONFIRM_PASSWORD": "Bestätigen Sie Ihr Passwort"
     }
   },
   "DAILY_CHECK": {

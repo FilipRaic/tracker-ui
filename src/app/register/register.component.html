@@ -25,7 +25,7 @@
         </div>
 
         <div class="mb-3">
-          <label for="email" class="form-label">{{ 'REGISTER.LAST_NAME' | translate }}</label>
+          <label for="lastName" class="form-label">{{ 'REGISTER.LAST_NAME' | translate }}</label>
           <input
             type="text"
             id="lastName"
@@ -65,7 +65,26 @@
             [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
           />
           <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-            <div *ngIf="f['password'].errors['required']">{{ 'REGISTER.PASSWORD_REQUIRED' | translate }}</div>
+            <div
+              *ngIf="f['password'].errors['required']">{{ 'REGISTER.PASSWORD_REQUIRED' | translate }}
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">{{ 'REGISTER.CONFIRM_PASSWORD' | translate }}</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            class="form-control"
+            placeholder="{{'REGISTER.PLACEHOLDER.CONFIRM_PASSWORD' | translate}}"
+            [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+          />
+          <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+            <div
+              *ngIf="f['confirmPassword'].errors['required']">{{ 'REGISTER.CONFIRM_PASSWORD_REQUIRED' | translate }}
+            </div>
           </div>
         </div>
 

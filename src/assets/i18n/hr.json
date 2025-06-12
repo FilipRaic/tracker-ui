@@ -58,7 +58,8 @@
       "FIRST_NAME": "Unesite svoje ime",
       "LAST_NAME": "Unesite svoje prezime",
       "EMAIL": "Unesite svoju e -poštu",
-      "PASSWORD": "Unesite svoju lozinku"
+      "PASSWORD": "Unesite svoju lozinku",
+      "CONFIRM_PASSWORD": "Potvrdite svoju lozinku"
     }
   },
   "DAILY_CHECK": {
