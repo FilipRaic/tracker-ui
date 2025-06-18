@@ -7,7 +7,7 @@ import { WellbeingTip } from '../model/WellbeingTip';
   providedIn: 'root',
 })
 export class TipService {
-  private apiUrl = 'http://localhost:8080/api/tip';
+  private apiUrl = '/api/tip';
 
   constructor(private http: HttpClient) {}
 

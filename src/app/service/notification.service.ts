@@ -18,7 +18,7 @@ export class NotificationService {
     return this.notifications.asObservable();
   }
 
-  addNotification(message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info'): number {
+  addNotification(message: string, type: 'success' | 'error' | 'info' | 'warning' = 'info'): void {
     const id = this.counter++;
     const notification: Notification = {message, type, id};
 
@@ -28,8 +28,6 @@ export class NotificationService {
     setTimeout(() => {
       this.removeNotification(id);
     }, 5000);
-
-    return id;
   }
 
   removeNotification(id: number): void {

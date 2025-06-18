@@ -19,7 +19,9 @@ export class AppComponent implements OnInit, OnDestroy {
   private readonly routesToHideNavbar = [
     '/daily-check',
     '/login',
-    '/register'
+    '/register',
+    '/forgot-password',
+    '/reset-password',
   ];
 
   constructor(private readonly router: Router) {

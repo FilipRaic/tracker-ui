@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
-import {Router, RouterLink} from '@angular/router';
+import {Router} from '@angular/router';
 import {AuthService} from '../service/auth.service';
 import {NgClass, NgIf} from '@angular/common';
 import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-forgot-password',
   standalone: true,
-  imports: [ReactiveFormsModule, NgIf, NgClass, RouterLink, TranslateModule],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  imports: [ReactiveFormsModule, NgIf, NgClass, TranslateModule],
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.scss']
 })
-export class LoginComponent implements OnInit {
-  loginForm!: FormGroup;
+export class ForgotPasswordComponent implements OnInit {
+  forgotPasswordForm!: FormGroup;
   submitted = false;
 
   constructor(
@@ -24,9 +24,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
+    this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
     });
 
     if (this.authService.isLoggedIn) {
@@ -35,19 +34,16 @@ export class LoginComponent implements OnInit {
   }
 
   get f() {
-    return this.loginForm.controls;
+    return this.forgotPasswordForm.controls;
   }
 
   onSubmit(): void {
     this.submitted = true;
 
-    if (this.loginForm.invalid) {
+    if (this.forgotPasswordForm.invalid) {
       return;
     }
 
-    this.authService.login({
-      email: this.f['email'].value,
-      password: this.f['password'].value
-    });
+    this.authService.sendForgotPasswordEmail(this.f['email'].value);
   }
 }
