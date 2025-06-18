@@ -27,13 +27,13 @@ describe('NotificationService', () => {
       const message = 'Test notification';
       const type = 'success';
 
-      const id = service.addNotification(message, type);
+      service.addNotification(message, type);
 
       service.getNotifications().subscribe(notifications => {
         expect(notifications.length).toBe(1);
         expect(notifications[0].message).toBe(message);
         expect(notifications[0].type).toBe(type);
-        expect(notifications[0].id).toBe(id);
+        expect(notifications[0].id).toBe(0);
         done();
       });
     });
@@ -51,11 +51,16 @@ describe('NotificationService', () => {
       });
     });
 
-    it('should return a unique ID for each notification', () => {
-      const id1 = service.addNotification('Test 1');
-      const id2 = service.addNotification('Test 2');
+    it('should return a unique ID for each notification', (done) => {
+      service.addNotification('Test 1');
+      service.addNotification('Test 2');
 
-      expect(id2).toBe(id1 + 1);
+      service.getNotifications().subscribe(notifications => {
+        expect(notifications.length).toBe(2);
+        expect(notifications[0].id).toBe(0);
+        expect(notifications[1].id).toBe(1);
+        done();
+      });
     });
 
     it('should automatically remove the notification after 5 seconds', () => {
@@ -75,9 +80,9 @@ describe('NotificationService', () => {
 
   describe('removeNotification', () => {
     it('should remove a notification by ID', (done) => {
-      const id = service.addNotification('Test notification');
+      service.addNotification('Test notification');
 
-      service.removeNotification(id);
+      service.removeNotification(0);
 
       service.getNotifications().subscribe(notifications => {
         expect(notifications.length).toBe(0);
@@ -86,26 +91,26 @@ describe('NotificationService', () => {
     });
 
     it('should not remove other notifications when removing by ID', (done) => {
-      const id1 = service.addNotification('Test 1');
-      const id2 = service.addNotification('Test 2');
+      service.addNotification('Test 1');
+      service.addNotification('Test 2');
 
-      service.removeNotification(id1);
+      service.removeNotification(0);
 
       service.getNotifications().subscribe(notifications => {
         expect(notifications.length).toBe(1);
-        expect(notifications[0].id).toBe(id2);
+        expect(notifications[0].id).toBe(1);
         done();
       });
     });
 
     it('should do nothing if the ID does not exist', (done) => {
-      const id = service.addNotification('Test notification');
+      service.addNotification('Test notification');
 
       service.removeNotification(999);
 
       service.getNotifications().subscribe(notifications => {
         expect(notifications.length).toBe(1);
-        expect(notifications[0].id).toBe(id);
+        expect(notifications[0].id).toBe(0);
         done();
       });
     });
