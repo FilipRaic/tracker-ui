@@ -18,7 +18,7 @@ export class LoadingService {
       this.loadingSubject.next(true);
     } else if (this.loadingMap.has(url)) {
       this.loadingMap.delete(url);
-      this.loadingSubject.next(this.loadingMap.size > 0);
+      this.loadingSubject.next(this.loadingMap.size !== 0);
     }
   }
 

@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable, tap, throwError} from 'rxjs';
-import {LoginRequest, LoginResponse, RegisterRequest, User} from '../model/Auth';
+import {BehaviorSubject, Observable, tap} from 'rxjs';
+import {LoginRequest, LoginResponse, RegisterRequest, ResetPasswordRequest, User} from '../model/Auth';
 import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
+import {NotificationService} from './notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,6 @@ export class AuthService {
 
   private readonly apiUrl = '/api/auth';
   private readonly accessTokenKey = 'auth_token';
-  private readonly refreshTokenKey = 'refresh_token';
 
   private readonly currentUserSubject: BehaviorSubject<User | null>;
   private readonly currentUser$: Observable<User | null>;
@@ -20,7 +20,8 @@ export class AuthService {
   constructor(
     private readonly router: Router,
     private readonly http: HttpClient,
-    private readonly translate: TranslateService
+    private readonly translate: TranslateService,
+    private readonly notificationService: NotificationService
   ) {
     const token = this.getAccessToken();
     const user = token ? this.getUserFromToken(token) : null;
@@ -32,49 +33,52 @@ export class AuthService {
     return !!this.getAccessToken();
   }
 
-  login(loginRequest: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, loginRequest)
+  login(loginRequest: LoginRequest): void {
+    this.http.post<LoginResponse>(`${this.apiUrl}/login`, loginRequest)
       .pipe(
         tap(response => {
           this.setAccessToken(response.accessToken);
-          this.setRefreshToken(response.refreshToken);
 
           const user = this.getUserFromToken(response.accessToken);
           this.currentUserSubject.next(user);
-        })
-      );
+        }),
+      ).subscribe(() => this.router.navigate(['/']).then());
   }
 
-  refreshToken(): Observable<LoginResponse> {
-    const refreshToken = this.getRefreshToken();
-    if (!refreshToken) {
-      return throwError(() => {
-        let errorMessage = '';
-        this.translate.get('AUTH.NO_REFRESH_TOKEN').subscribe(translation => {
-          errorMessage = translation;
+  register(registerRequest: RegisterRequest): void {
+    this.http.post<void>(`${this.apiUrl}/register`, registerRequest)
+      .subscribe(() => {
+        this.translate.get('REGISTER.SUCCESS_MESSAGE').subscribe(translation => {
+          this.notificationService.addNotification(translation, 'success');
         });
-        return new Error(errorMessage);
+        this.router.navigate(['/login']).then();
       });
-    }
-
-    return this.http.post<LoginResponse>(`${this.apiUrl}/refresh-token`, {refreshToken})
-      .pipe(
-        tap(response => {
-          this.setAccessToken(response.accessToken);
-          this.setRefreshToken(response.refreshToken);
-
-          const user = this.getUserFromToken(response.accessToken);
-          this.currentUserSubject.next(user);
-        })
-      );
   }
 
-  register(registerRequest: RegisterRequest): Observable<void> {
-    return this.http.post<void>(`${this.apiUrl}/register`, registerRequest);
+  sendForgotPasswordEmail(email: string): void {
+    this.http.post<void>(`${this.apiUrl}/forgot-password/send`, {email})
+      .subscribe(() => {
+        this.translate.get('FORGOT_PASSWORD.SUCCESS').subscribe(translation => {
+          this.notificationService.addNotification(translation, 'success');
+        });
+      })
+  }
+
+  resetPassword(resetPasswordRequest: ResetPasswordRequest, token: string): void {
+    this.http.post<void>(`${this.apiUrl}/reset-password`, resetPasswordRequest, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).subscribe(() => {
+      this.translate.get('RESET_PASSWORD.SUCCESS').subscribe(translation => {
+        this.notificationService.addNotification(translation, 'success');
+      });
+      this.router.navigate(['/login']).then();
+    })
   }
 
   logout(): void {
-    this.clearTokens();
+    this.clearToken();
     this.currentUserSubject.next(null);
 
     this.router.navigate(['/login']);
@@ -128,16 +132,7 @@ export class AuthService {
     localStorage.setItem(this.accessTokenKey, token);
   }
 
-  private getRefreshToken(): string | null {
-    return sessionStorage.getItem(this.refreshTokenKey);
-  }
-
-  private setRefreshToken(token: string): void {
-    sessionStorage.setItem(this.refreshTokenKey, token);
-  }
-
-  private clearTokens(): void {
+  private clearToken(): void {
     localStorage.removeItem(this.accessTokenKey);
-    sessionStorage.removeItem(this.refreshTokenKey);
   }
 }

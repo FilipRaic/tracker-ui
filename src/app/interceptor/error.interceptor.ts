@@ -1,12 +1,11 @@
-import {HttpErrorResponse, HttpHandlerFn, HttpInterceptorFn, HttpRequest} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpHandlerFn, HttpInterceptorFn, HttpRequest} from '@angular/common/http';
 import {inject} from '@angular/core';
-import {catchError} from 'rxjs/operators';
-import {throwError} from 'rxjs';
+import {catchError, switchMap, throwError} from 'rxjs';
 import {NotificationService} from '../service/notification.service';
 import {Router} from '@angular/router';
+import {LoginResponse} from '../model/Auth';
 
 const accessTokenKey = 'auth_token';
-const refreshTokenKey = 'refresh_token';
 
 export const errorInterceptor: HttpInterceptorFn = (
   request: HttpRequest<unknown>,
@@ -14,22 +13,37 @@ export const errorInterceptor: HttpInterceptorFn = (
 ) => {
   const notificationService = inject(NotificationService);
   const router = inject(Router);
+  const httpClient = inject(HttpClient);
 
   return next(request).pipe(
     catchError((error: HttpErrorResponse) => {
-      const errorMessage = getErrorMessage(error);
-      notificationService.addNotification(errorMessage, 'error');
-
       if (error.status === 401 || error.status === 403) {
-        localStorage.removeItem(accessTokenKey);
-        sessionStorage.removeItem(refreshTokenKey);
+        return refreshToken(router, httpClient).pipe(
+          switchMap((response: LoginResponse) => {
+            localStorage.setItem(accessTokenKey, response.accessToken);
 
-        if (!router.url.includes('/login')) {
-          router.navigate(['/']).then();
-        }
+            const updatedRequest = request.clone({
+              setHeaders: {
+                Authorization: `Bearer ${response.accessToken}`
+              }
+            });
+
+            return next(updatedRequest);
+          }),
+          catchError((refreshError: HttpErrorResponse) => {
+            router.navigate(['/login']).then();
+            const errorMessage = getErrorMessage(error);
+            notificationService.addNotification(errorMessage, 'error');
+
+            return throwError(() => refreshError);
+          })
+        );
+      } else {
+        const errorMessage = getErrorMessage(error);
+        notificationService.addNotification(errorMessage, 'error');
+
+        return throwError(() => error);
       }
-
-      return throwError(() => error);
     })
   );
 };
@@ -40,4 +54,13 @@ function getErrorMessage(error: any): string {
   }
 
   return 'An unexpected error occurred';
+}
+
+function refreshToken(router: Router, httpClient: HttpClient) {
+  const accessToken = localStorage.getItem(accessTokenKey);
+  if (!accessToken) {
+    router.navigate(['/login']).then();
+  }
+
+  return httpClient.put<LoginResponse>(`/api/auth/refresh-token`, {});
 }

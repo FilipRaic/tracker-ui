@@ -2,9 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
 import {AuthService} from '../service/auth.service';
-import {NotificationService} from '../service/notification.service';
 import {NgClass, NgIf} from '@angular/common';
-import {TranslateModule, TranslateService} from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-register',
@@ -20,9 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly router: Router,
-    private readonly authService: AuthService,
-    private readonly notificationService: NotificationService,
-    private readonly translate: TranslateService
+    private readonly authService: AuthService
   ) {
   }
 
@@ -42,7 +39,7 @@ export class RegisterComponent implements OnInit {
     });
 
     if (this.authService.isLoggedIn) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/']).then();
     }
   }
 
@@ -71,13 +68,6 @@ export class RegisterComponent implements OnInit {
       email: this.f['email'].value,
       password: this.f['password'].value,
       confirmPassword: this.f['confirmPassword'].value
-    }).subscribe({
-      next: () => {
-        this.translate.get('REGISTER.SUCCESS_MESSAGE').subscribe(translation => {
-          this.notificationService.addNotification(translation, 'success');
-        });
-        this.router.navigate(['/login']).then();
-      },
     });
   }
 }
