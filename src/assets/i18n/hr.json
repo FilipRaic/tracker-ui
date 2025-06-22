@@ -8,6 +8,7 @@
     "HEADER": "Praćenje navika za mentalno zdravlje",
     "HOME": "Početna",
     "HABIT": "Navika",
+    "CHECK_IN": "Pregled dnevnih prijava",
     "TRACK_HABITS": "Prati navike",
     "YOUR_HABITS": "Tvoje navike",
     "JOURNAL": "Dnevnik",
@@ -166,5 +167,19 @@
     "LATEST_QUIZZES": "Najnoviji kvizovi",
     "QUIZ_DESCRIPTION": "Ovo su teme s kojima ste se borili posljednjih nekoliko dana",
     "ACHIEVEMENTS": "Najnovija postignuća"
+  },
+  "CHECK_IN_OVERVIEW": {
+    "HEADER": "Pregled prijava",
+    "START_DATE": "Datum početka",
+    "END_DATE": "Datum završetka",
+    "FILTER": "Filtriraj",
+    "NO_CHECK_INS": "Nema pronađenih prijava.",
+    "SUMMARY": "Sažetak prijave",
+    "AVERAGE": "prosjek",
+    "PREV": "Prethodno",
+    "SHOWING": "Prikazano",
+    "OF": "od",
+    "NEXT": "Sljedeće",
+    "DATE_ERROR": "Datum početka ne može biti nakon datuma završetka!"
   }
 }

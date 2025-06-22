@@ -1,0 +1,66 @@
+<div class="container mt-4">
+  <h2>{{ 'CHECK_IN_OVERVIEW.HEADER' | translate }}</h2>
+
+  <form [formGroup]="checkinsForm" (ngSubmit)="filterCheckins()" class="row g-3 mb-4">
+    <div class="col-md-5">
+      <label class="form-label">{{ 'CHECK_IN_OVERVIEW.START_DATE' | translate }}</label>
+      <input type="date" class="form-control" formControlName="startDate">
+    </div>
+    <div class="col-md-5">
+      <label class="form-label">{{ 'CHECK_IN_OVERVIEW.END_DATE' | translate }}</label>
+      <input type="date" class="form-control" formControlName="endDate">
+    </div>
+    <div class="col-md-2 d-flex align-items-end">
+      <button type="submit" class="btn custom-btn w-100">{{ 'CHECK_IN_OVERVIEW.FILTER' | translate }}</button>
+    </div>
+  </form>
+
+  <div *ngIf="filteredCheckins.length === 0" class="alert alert-info">
+    {{ 'CHECK_IN_OVERVIEW.NO_CHECK_INS' | translate }}
+  </div>
+
+  <div class="accordion" id="checkinAccordion">
+    <div *ngFor="let check of paginatedCheckins; let i = index" class="accordion-item mb-2">
+      <h2 class="accordion-header" id="heading{{i}}">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                [attr.data-bs-target]="'#collapse' + i" aria-expanded="false"
+                [attr.aria-controls]="'collapse' + i">
+          {{ check.checkInDate | date:'dd.MM.yyyy' }} — {{ 'CHECK_IN_OVERVIEW.SUMMARY' | translate }}:
+          {{ getAverageScore(check) }}⭐ {{ 'CHECK_IN_OVERVIEW.AVERAGE' | translate }}
+        </button>
+      </h2>
+      <div [id]="'collapse' + i" class="accordion-collapse collapse"
+           [attr.aria-labelledby]="'heading' + i" data-bs-parent="#checkinAccordion">
+        <div class="accordion-body">
+          <div *ngFor="let q of check.questions" class="mb-3">
+            <div class="d-flex align-items-center justify-content-between">
+              <div>
+                <span class="fs-5 me-2">{{ getCategoryIcon(q.category) }}</span>
+                <strong *ngIf="currentLang === 'en'">{{ q.content }}</strong>
+                <strong *ngIf="currentLang === 'de'">{{ q.contentDe }}</strong>
+                <strong *ngIf="currentLang === 'hr'">{{ q.contentHr }}</strong>
+              </div>
+              <span class="badge custom-badge fs-6">{{ getScoreLabel(q.score) }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredCheckins.length > itemsPerPage" class="d-flex justify-content-between align-items-center mt-3">
+    <button class="btn btn-outline-primary" (click)="prevPage()" [disabled]="currentPage === 1">
+      {{ 'CHECK_IN_OVERVIEW.PREV' | translate }}
+    </button>
+
+    <span class="text-muted">
+    {{ 'CHECK_IN_OVERVIEW.SHOWING' | translate }} {{ (currentPage - 1) * itemsPerPage + 1 }}–{{ getPageEnd() }}
+      {{ 'CHECK_IN_OVERVIEW.OF' | translate }} {{ filteredCheckins.length }}
+  </span>
+
+    <button class="btn btn-outline-primary" (click)="nextPage()"
+            [disabled]="(currentPage * itemsPerPage) >= filteredCheckins.length">
+      {{ 'CHECK_IN_OVERVIEW.NEXT' | translate }}
+    </button>
+  </div>
+</div>

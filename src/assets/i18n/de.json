@@ -8,6 +8,7 @@
     "HEADER": "Gewohnheitstracker für psychische Gesundheit",
     "HOME": "Startseite",
     "HABIT": "Gewohnheit",
+    "CHECK_IN": "Check-in Übersicht",
     "TRACK_HABITS": "Gewohnheiten verfolgen",
     "YOUR_HABITS": "Deine Gewohnheiten",
     "JOURNAL": "Tagebuch",
@@ -166,5 +167,19 @@
     "LATEST_QUIZZES": "Neueste Quizze",
     "QUIZ_DESCRIPTION": "Hier sehen Sie, womit Sie in den letzten Tagen Schwierigkeiten hatten",
     "ACHIEVEMENTS": "Neueste Erfolge"
+  },
+  "CHECK_IN_OVERVIEW": {
+    "HEADER": "Check-in Übersicht",
+    "START_DATE": "Startdatum",
+    "END_DATE": "Enddatum",
+    "FILTER": "Filtern",
+    "NO_CHECK_INS": "Keine Check-ins gefunden.",
+    "SUMMARY": "Check-in Zusammenfassung",
+    "AVERAGE": "Durchschnitt",
+    "PREV": "Zurück",
+    "SHOWING": "Anzeigen",
+    "OF": "von",
+    "NEXT": "Weiter",
+    "DATE_ERROR": "Das Startdatum darf nicht nach dem Enddatum liegen!"
   }
 }
