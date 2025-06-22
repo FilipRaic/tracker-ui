@@ -93,6 +93,8 @@
     "NEXT": "Next",
     "SUBMIT": "Submit",
     "NO_QUESTIONS": "No questions available for this daily check.",
+    "ERROR_QUESTIONS_NOT_FILLED": "Please answer all questions before submitting",
+    "CHECK_SUBMITTED": "Daily check submitted",
     "NO_CHECK_TITLE": "No Daily Check Available",
     "NO_CHECK_MESSAGE": "It looks like you've already completed today's check or there isn't one available right now.",
     "NO_CHECK_FOOTER": "Please check back tomorrow for a new daily check!",
@@ -135,7 +137,8 @@
       "DATE_ISO_FORMAT": "must be in ISO format (YYYY-MM-DD)",
       "PRESENT_OR_FUTURE": "cannot be in the past",
       "REQUIRED": "is required or invalid"
-    }
+    },
+    "HABIT_CREATED": "New habit created"
   },
   "HABIT_STATUS": {
     "TABLE_HEADER": "Current state of Habits",

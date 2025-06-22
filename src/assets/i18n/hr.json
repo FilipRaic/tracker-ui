@@ -19,7 +19,7 @@
     "NO_REFRESH_TOKEN": "Nije dostupan token za osvježavanje"
   },
   "LOGIN": {
-    "TITLE": "Prijaviti se",
+    "TITLE": "Prijava",
     "WELCOME": "Dobrodošli u vašeg zdravstvenog partnera",
     "HELP_TEXT": "Pomaganje ljudima širom svijeta",
     "HELP_TEXT_EXTENDED": "Fusce Cursus Tellus elit Pharetra Semper. ",
@@ -27,8 +27,8 @@
     "EMAIL_REQUIRED": "Potrebna je e -pošta",
     "PASSWORD": "Lozinka",
     "PASSWORD_REQUIRED": "Potrebna je lozinka",
-    "BUTTON": "Prijaviti se",
-    "REGISTER_LINK": "Registar",
+    "BUTTON": "Prijavi se",
+    "REGISTER_LINK": "Registracija",
     "FORGOT_PASSWORD": "Zaboravljena lozinka",
     "PLACEHOLDER": {
       "EMAIL": "Unesite svoju e -poštu",
@@ -36,7 +36,7 @@
     }
   },
   "REGISTER": {
-    "TITLE": "Prijaviti se",
+    "TITLE": "Registracija",
     "FIRST_NAME": "Ime",
     "FIRST_NAME_REQUIRED": "Ime je potrebno",
     "LAST_NAME": "Prezime",
@@ -50,8 +50,8 @@
     "CONFIRM_PASSWORD": "Potvrdite lozinku",
     "CONFIRM_PASSWORD_REQUIRED": "Potvrditi lozinku je potrebna",
     "PASSWORDS_MISMATCH": "Lozinke se moraju podudarati",
-    "BUTTON": "Registar",
-    "LOGIN_LINK": "Prijaviti se",
+    "BUTTON": "Registriraj se",
+    "LOGIN_LINK": "Prijava",
     "SUCCESS_MESSAGE": "Molimo prijavite se sa svojim novim računom",
     "ERROR_MESSAGE": "Pogreška se dogodila tijekom registracije",
     "PLACEHOLDER": {
@@ -93,6 +93,8 @@
     "NEXT": "Sljedeće",
     "SUBMIT": "Pošalji",
     "NO_QUESTIONS": "Nema dostupnih pitanja za ovu dnevnu prijavu.",
+    "ERROR_QUESTIONS_NOT_FILLED": "Molim vas odgovorite na sva pitanja prije predaje",
+    "CHECK_SUBMITTED": "Dnevna provjera predana",
     "NO_CHECK_TITLE": "Nije dostupna dnevna provjera",
     "NO_CHECK_MESSAGE": "Izgleda da ste već završili današnju provjeru ili trenutno nije dostupna",
     "NO_CHECK_FOOTER": "Molimo provjerite sutra za novu dnevnu provjeru!",
@@ -135,7 +137,8 @@
       "DATE_ISO_FORMAT": "mora biti u ISO formatu (GGGG-MM-DD)",
       "PRESENT_OR_FUTURE": "ne može biti u prošlosti",
       "REQUIRED": "je obavezno ili nije ispravno"
-    }
+    },
+    "HABIT_CREATED": "Kreirana nova navika"
   },
   "HABIT_STATUS": {
     "TABLE_HEADER": "Trenutno stanje navika",

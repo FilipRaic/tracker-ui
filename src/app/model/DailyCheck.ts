@@ -9,6 +9,8 @@ export interface DailyQuestion {
   id: number;
   category: QuestionCategory;
   content: string;
+  contentDe: string;
+  contentHr: string;
   score: number | null;
 }
 
