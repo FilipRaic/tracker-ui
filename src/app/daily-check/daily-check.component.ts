@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {DailyCheckService} from '../service/daily-check.service';
 import {DailyCheck, DailyQuestion} from '../model/DailyCheck';
 import {NotificationService} from '../service/notification.service';
-import {Observable, tap} from 'rxjs';
+import {Observable, Subscription, tap} from 'rxjs';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 @Component({
@@ -15,11 +15,12 @@ import {TranslatePipe, TranslateService} from '@ngx-translate/core';
   templateUrl: './daily-check.component.html',
   styleUrl: './daily-check.component.scss'
 })
-export class DailyCheckComponent implements OnInit {
+export class DailyCheckComponent implements OnInit, OnDestroy {
   dailyCheck$ = new Observable<DailyCheck | null>();
   currentQuestionIndex = 0;
   currentQuestion: DailyQuestion | null = null;
   currentLang = 'en';
+  private langSub!: Subscription;
 
   constructor(
     private readonly router: Router,
@@ -36,8 +37,15 @@ export class DailyCheckComponent implements OnInit {
       this.loadDailyCheck(uuid);
       if(this.translate.currentLang != null){
         this.currentLang = this.translate.currentLang;
+        this.langSub = this.translate.onLangChange.subscribe(lang => {
+          this.currentLang = lang.lang;
+        });
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
   }
 
   loadDailyCheck(uuid: string): void {

@@ -19,6 +19,7 @@ export interface DailyCheck {
   questions: DailyQuestion[];
   completed: boolean;
   userFirstName: string;
+  checkInDate?: string;
 }
 
 export interface DailyCheckSubmit {

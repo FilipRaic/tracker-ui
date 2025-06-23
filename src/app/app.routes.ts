@@ -9,6 +9,7 @@ import {RegisterComponent} from './register/register.component';
 import {canActivate} from './guard/login.guard';
 import {ForgotPasswordComponent} from './forgot-password/forgot-password.component';
 import {ResetPasswordComponent} from './reset-password/reset-password.component';
+import {CheckOverviewComponent} from './check-overview/check-overview.component';
 
 export const routes: Routes = [
   // Public routes
@@ -23,6 +24,7 @@ export const routes: Routes = [
   {path: "habit/status", component: HabitStatusComponent, canActivate: [canActivate]},
   {path: "habit/create", component: HabitCreateComponent, canActivate: [canActivate]},
   {path: "journal", component: JournalComponent, canActivate: [canActivate]},
+  {path: "check-overview", component: CheckOverviewComponent, canActivate: [canActivate]},
 
   // Redirect to login for any other routes
   {path: "**", redirectTo: "login"}

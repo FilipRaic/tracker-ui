@@ -8,6 +8,7 @@
     "HEADER": "Habit tracker for mental health",
     "HOME": "Home",
     "HABIT": "Habit",
+    "CHECK_IN": "Check-In overview",
     "TRACK_HABITS": "Track Habits",
     "YOUR_HABITS": "Your Habits",
     "JOURNAL": "Journal",
@@ -166,5 +167,19 @@
     "LATEST_QUIZZES": "Latest quizzes",
     "QUIZ_DESCRIPTION": "Here is what you have been struggling with the last couple of days",
     "ACHIEVEMENTS": "Latest achievements"
+  },
+  "CHECK_IN_OVERVIEW": {
+    "HEADER": "Check-In Overview",
+    "START_DATE": "Start Date",
+    "END_DATE": "End Date",
+    "FILTER": "Filter",
+    "NO_CHECK_INS": "No check-ins found.",
+    "SUMMARY": "Check-in Summary",
+    "AVERAGE": "average",
+    "PREV": "Previous",
+    "SHOWING": "Showing",
+    "OF": "of",
+    "NEXT": "Next",
+    "DATE_ERROR": "Start date can't be bigger the end date!"
   }
 }
