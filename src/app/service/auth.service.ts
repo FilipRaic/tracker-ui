@@ -135,4 +135,9 @@ export class AuthService {
   private clearToken(): void {
     localStorage.removeItem(this.accessTokenKey);
   }
+  public getCurrentUserId(): number | null {
+    const token = this.getAccessToken();
+    const user = token ? this.getUserFromToken(token) : null;
+    return user?.id ?? null;
+}
 }

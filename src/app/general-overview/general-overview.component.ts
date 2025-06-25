@@ -19,6 +19,7 @@ export class GeneralOverviewComponent implements OnInit{
    tips: WellbeingTip[] = [];
    mentalIssues: String[] = [];
    achievements: Achievement[] = [];
+   streak: Number=0;
 
   constructor(private tipService: TipService, private achievementService: AchievementService) {}
 
@@ -28,6 +29,9 @@ export class GeneralOverviewComponent implements OnInit{
       this.getMentalIssues();
     });
     
+    this.tipService.getStreak().subscribe((data) => {
+      this.streak=data;
+    });
      this.achievementService.getAchievements().subscribe({
       next: (data) => (this.achievements = data),
       error: (err) => console.error('Failed to load achievements', err),
