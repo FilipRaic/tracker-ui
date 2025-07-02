@@ -9,4 +9,5 @@ export interface Habit {
 export interface HabitStatus extends Habit {
   done: boolean;
   dueDate: string;
+  streak: number;
 }
