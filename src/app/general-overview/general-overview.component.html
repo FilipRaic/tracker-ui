@@ -1,11 +1,11 @@
-<main class="content">
-  <section class="tips">
-    <h2>{{ 'DASHBOARD.TIPS_AND_TRICKS' | translate }}</h2>
-    <p>{{ 'DASHBOARD.SUGGESTIONS' | translate }}</p>
-    <ol>
-      <li *ngFor="let tip of tips">{{ tip.tipText }}</li>
-    </ol>
-  </section>
+ <main class="content">
+    <section class="tips">
+      <h2>{{'DASHBOARD.TIPS_AND_TRICKS' | translate}}</h2>
+      <p>{{'DASHBOARD.SUGGESTIONS' | translate}}</p>
+      <ol>
+        <li *ngFor="let tip of tips">{{ getTipText(tip) }}</li>
+      </ol>
+    </section>
 
   <section class="streak">
     <div class="emoji">🐻</div>
@@ -16,7 +16,7 @@
       <h3>{{ 'DASHBOARD.LATEST_QUIZZES' | translate }}</h3>
       <p>{{ 'DASHBOARD.QUIZ_DESCRIPTION' | translate }}</p>
       <ul>
-        <li *ngFor="let issue of mentalIssues">{{ issue }}</li>
+        <li>{{ getMentalIssues() }}</li>
       </ul>
     </div>
   </section>
