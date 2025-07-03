@@ -40,64 +40,64 @@ export class GeneralOverviewComponent implements OnInit {
   getMentalIssues(): string[] {
   this.mentalIssues = []; 
   const lang = this.translateService.currentLang;
-    this.tips.forEach(tip => {
-    if (tip.category === 'MENTAL' && tip.score > 2) {
+    for(var i=0; i<4; i++){
+    if (this.tips[i].category === 'MENTAL' && this.tips[i].score > 2) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Stres' :
         lang === 'de' ? 'Stress' :
         'Stress'
       );
     } 
-    else if (tip.category === 'MENTAL' && tip.score < 3) {
+    else if (this.tips[i].category === 'MENTAL' && this.tips[i].score < 3) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Smirenost' :
         lang === 'de' ? 'Ruhe' :
         'Calm'
       );
     }
-    else if (tip.category === 'EMOTIONAL' && tip.score > 2) {
+    else if (this.tips[i].category === 'EMOTIONAL' && this.tips[i].score > 2) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Depresija' :
         lang === 'de' ? 'Depression' :
         'Depression'
       );
     } 
-    else if (tip.category === 'EMOTIONAL' && tip.score < 3) {
+    else if (this.tips[i].category === 'EMOTIONAL' && this.tips[i].score < 3) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Veselost' :
         lang === 'de' ? 'Fröhlichkeit' :
         'Cheerful'
       );
     }
-    else if (tip.category === 'PHYSICAL' && tip.score > 2) {
+    else if (this.tips[i].category === 'PHYSICAL' && this.tips[i].score > 2) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Neuravnotežen stil života' :
         lang === 'de' ? 'Unausgewogener Lebensstil' :
         'Lifestyle imbalance'
       );
     } 
-    else if (tip.category === 'PHYSICAL' && tip.score < 3) {
+    else if (this.tips[i].category === 'PHYSICAL' && this.tips[i].score < 3) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Ravnoteža' :
         lang === 'de' ? 'Gleichgewicht' :
         'Equilibrium'
       );
     } 
-    else if (tip.category === 'SOCIAL' && tip.score > 2) {
+    else if (this.tips[i].category === 'SOCIAL' && this.tips[i].score > 2) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Socijalna anksioznost' :
         lang === 'de' ? 'Soziale Angst' :
         'Social anxiety'
       );
     } 
-    else if (tip.category === 'SOCIAL' && tip.score < 3) {
+    else if (this.tips[i].category === 'SOCIAL' && this.tips[i].score < 3) {
       this.mentalIssues.push(
         lang === 'hr' ? 'Socijalno samopouzdanje' :
         lang === 'de' ? 'Soziales Selbstvertrauen' :
         'Social confidence'
       );
     }
-  });
+    };
   return this.mentalIssues;
 }
 getTipText(tip: WellbeingTip): string {
