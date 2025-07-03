@@ -16,6 +16,9 @@
             <div>
               <strong data-testid="habitNameLabel" class="d-block fs-6 mb-1">
                 {{ habit.name }}
+                <span *ngIf="habit.streak && habit.streak > 0" class="text-danger">
+                  {{ habit.done ? habit.streak + 1 : habit.streak }}<i class="bi bi-fire me-1"></i>
+                </span>
               </strong>
               <div *ngIf="habit.notes" class="mt-1">
                 <small class="text-secondary fst-italic" data-testid="habitNotesLabel">
@@ -38,7 +41,7 @@
                 (click)="markDone(habit)"
                 data-testid="markDoneButton"
               >
-                {{ (habit.done ? 'HABIT_STATUS.MARK_BUTTON_DONE' : 'HABIT_STATUS.MARK_BUTTON_NOT_DONE') | translate}}
+                {{ (habit.done ? 'HABIT_STATUS.MARK_BUTTON_DONE' : 'HABIT_STATUS.MARK_BUTTON_NOT_DONE') | translate }}
               </button>
             </div>
           </li>
