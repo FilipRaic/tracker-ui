@@ -1,5 +1,16 @@
 # TrackerUi
 
+## Screensh
+![login.png](src/assets/screenshots/login.png)
+![register.png](src/assets/screenshots/register.png)
+![dashboard.png](src/assets/screenshots/dashboard.png)
+![journal.png](src/assets/screenshots/journal.png)
+![track-habit.png](src/assets/screenshots/track-habit.png)
+![edit-habit.png](src/assets/screenshots/edit-habit.png)
+![check-in-overview.png](src/assets/screenshots/check-in-overview.png)
+![daily-email.png](src/assets/screenshots/daily-email.png)
+![daily-check-in-questionare.png](src/assets/screenshots/daily-check-in-questionare.png)
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.13.
 
 ## Development server
