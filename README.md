@@ -1,6 +1,6 @@
 # TrackerUi
 
-## Screensh
+## Screenshots
 ![login.png](src/assets/screenshots/login.png)
 ![register.png](src/assets/screenshots/register.png)
 ![dashboard.png](src/assets/screenshots/dashboard.png)
